@@ -64,10 +64,11 @@ npx -y serve -l 4321 -s .
 
 `-s` matters: it rewrites unknown paths to `index.html` so `/projects` works on refresh.
 
-## Deploy to Cloudflare Pages
+## Deploy to GitHub Pages
 
-Build command: *(none)* · Output directory: `/`
+Settings → Pages → Deploy from a branch: `main`, folder `/`. No build step.
 
-`_redirects` handles the SPA fallback and `_headers` sets immutable caching on
-`/assets/*` while keeping `sw.js` uncached — without that, browsers pin a stale
-service worker.
+`.nojekyll` stops Jekyll from filtering files, and `404.html` (a copy of
+`index.html`) is the SPA fallback so `/projects` survives a refresh. GitHub
+Pages ignores custom headers, so `sw.js` cache-busting relies on the version
+bump in the service worker itself.

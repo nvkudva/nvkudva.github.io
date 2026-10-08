@@ -119,6 +119,36 @@ export const platforms = [
    where `draft: true` still marks an inference. */
 export const projects = [
   {
+    name: 'ollajev', title: 'Ollajev', lang: 'Python', updated: '2026-10-08',
+    status: 'live',
+    deployUrl: 'https://nvkudva.github.io/ollajev/',
+    shot: '/public/shots/ollajev.jpg',
+    desc: 'Like Ollama, for decision models. Pull a System One model from Hugging Face and run it on your machine behind the same /v1/systemone API as the hosted Jev.',
+  },
+  {
+    name: 'obedient-ai', title: 'obedient-ai', lang: 'Shell', updated: '2026-10-03',
+    status: 'no-deployment',
+    desc: 'A Claude Code plugin that loads a fixed set of terse standing rules into every session, so you stop repeating the same instructions.',
+  },
+  {
+    name: 'mini-harness', title: 'Mini Harness', lang: 'JavaScript', updated: '2026-10-01',
+    status: 'no-deployment',
+    desc: 'A coding agent in about 160 lines of Node.js. No dependencies, and it works with any OpenAI-compatible local LLM.',
+  },
+  {
+    name: 'laya-server', title: 'Laya Server', lang: 'Python', updated: '2026-09-22',
+    status: 'no-deployment',
+    shot: '/public/shots/laya-server.jpg',
+    desc: 'A local FastAPI server for the Laya decision model. A drop-in replacement for TypeSafe’s Jev API that returns calibrated probabilities from one forward pass.',
+  },
+  {
+    name: 'laya-web', title: 'Laya Web', lang: 'TypeScript', updated: '2026-09-21',
+    status: 'live',
+    deployUrl: 'https://laya-web.pages.dev',
+    shot: '/public/shots/laya-web.jpg',
+    desc: 'The Laya decision model running entirely in the browser. 8-bit weights, no backend, nothing leaves the tab.',
+  },
+  {
     name: 'Smart-News', title: 'SmartNews', lang: 'TypeScript', updated: '2026-09-08',
     status: 'live',
     deployUrl: 'https://smartnews.nvkudva.workers.dev',

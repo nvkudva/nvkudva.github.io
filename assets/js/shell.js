@@ -4,7 +4,7 @@ const NAV = [
   ['/', 'Overview'],
   ['/resume', 'Résumé'],
   ['/projects', 'Projects'],
-  ['/building', 'Building'],
+  ['/building', 'GitHub'],
   ['/contact', 'Contact'],
 ];
 

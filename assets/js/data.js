@@ -119,6 +119,56 @@ export const platforms = [
    where `draft: true` still marks an inference. */
 export const projects = [
   {
+    name: 'super-flash', title: 'Super Flash', lang: 'TypeScript', updated: '2026-10-18',
+    status: 'no-deployment',
+    shot: '/public/shots/super-flash.jpg',
+    desc: 'A Flash-style animation editor that runs entirely in the browser — draw shapes, tween them on a timeline, attach real JavaScript to movie events, and export a still, a video, or one self-contained HTML file.',
+  },
+  {
+    name: 'omni-api', title: 'Omni', lang: 'Python', updated: '2026-10-18',
+    wip: true, status: 'no-deployment',
+    shot: '/public/shots/omni-api.jpg',
+    desc: 'Every local model your app needs, behind one port. A local CLI that runs, supervises and serves chat, decision, embedding and speech models over one OpenAI-compatible gateway.',
+  },
+  {
+    name: 'Smart-LocalAI', title: 'Smart LocalAI', lang: 'JavaScript', updated: '2026-10-18',
+    status: 'no-deployment',
+    shot: '/public/shots/smart-localai.jpg',
+    desc: 'Chrome sidebar extension — a chat and page agent like Claude for Chrome. Talk in the sidebar and let the model edit the current page, powered by LM Studio, Ollama, or any LLM endpoint.',
+  },
+  {
+    name: 'HyperLight', title: 'Hyperlight', lang: 'Python', updated: '2026-10-18',
+    wip: true, status: 'not-web',
+    shot: '/public/shots/hyperlight.jpg',
+    desc: 'Private, on-device search for the Mac. A Spotlight replacement on Apple Silicon that lives in the menu bar and understands text, images and speech — nothing leaves the machine.',
+  },
+  {
+    name: 'activity-monitor-pro', title: 'Activity Monitor Pro', lang: 'Swift', updated: '2026-10-14',
+    wip: true, status: 'not-web',
+    shot: '/public/shots/activity-monitor-pro.jpg',
+    desc: 'The system monitor developers actually wanted. One window for CPU, memory, energy, disk and network per process — by app, by tree, by agent — straight from Darwin and Mach.',
+  },
+  {
+    name: 'vega-web', title: 'Vega', lang: 'TypeScript', updated: '2026-10-12',
+    wip: true, status: 'live',
+    deployUrl: 'https://vega-onnx.pages.dev',
+    shot: '/public/shots/vega-web.jpg',
+    desc: 'A typed decision model running fully in the browser on WebAssembly. Ask choice, score or boolean questions over text or images — calibrated probabilities, nothing leaves the tab.',
+  },
+  {
+    name: 'm-wardrobe', title: 'M Wardrobe', lang: 'TypeScript', updated: '2026-10-10',
+    status: 'live',
+    deployUrl: 'https://m-wardrobe.nvkudva.workers.dev',
+    shot: '/public/shots/m-wardrobe.jpg',
+    desc: 'A tech demo: real-time cloth physics on a mobile web page. Every garment is a cloth simulation on a hanger, solved in plain JavaScript and drawn with WebGL through Three.js.',
+  },
+  {
+    name: 'ai-newtab', title: 'AI Homepage', lang: 'TypeScript', updated: '2026-10-08',
+    status: 'no-deployment',
+    shot: '/public/shots/ai-newtab.jpg',
+    desc: 'A new tab that reads the internet for you. An agent looks at what you actually browse and writes a fresh homepage from it — rebuilt in the background, in whatever style you describe.',
+  },
+  {
     name: 'ollajev', title: 'Ollajev', lang: 'Python', updated: '2026-10-08',
     status: 'live',
     deployUrl: 'https://nvkudva.github.io/ollajev/',

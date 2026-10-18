@@ -21,7 +21,7 @@ const STATUS = {
   live: ['Live', 'ok'],
   'broken-deployment': ['Deploy broken', 'warn'],
   'no-deployment': ['Not deployed', 'off'],
-  'not-web': ['Android app', 'off'],
+  'not-web': ['Native app', 'off'],
   'closed-source': ['Closed source', 'off'],
 };
 
@@ -31,7 +31,7 @@ const STATUS = {
 function actions(p, repo) {
   const liveOn = p.status === 'live' && p.deployUrl;
   const liveWhy = p.status === 'broken-deployment' ? 'Deploy 404'
-    : p.status === 'not-web' ? 'Android app'
+    : p.status === 'not-web' ? 'Native app'
       : p.status === 'closed-source' ? 'Private app' : 'Not deployed';
 
   const live = liveOn

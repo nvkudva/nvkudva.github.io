@@ -109,7 +109,7 @@ export const buildingView = () => `
     <div class="k-rail">
       ${projects.map((p, i) => {
         const st = { live:['Live','ok'], 'broken-deployment':['Deploy broken','warn'],
-                     'no-deployment':['Not deployed','off'], 'not-web':['Android app','off'],
+                     'no-deployment':['Not deployed','off'], 'not-web':['Native app','off'],
                      'closed-source':['Closed source','off'] }[p.status]
                    || ['Not deployed','off'];
         return `
@@ -134,7 +134,7 @@ export const buildingView = () => `
             <div class="k-acts2">
               ${p.status === 'live' && p.deployUrl
                 ? `<a class="k-act live" href="${p.deployUrl}" target="_blank" rel="noopener noreferrer">${svg('live')}Live</a>`
-                : `<span class="k-act off">${svg('live')}${esc(p.status === 'broken-deployment' ? 'Deploy 404' : p.status === 'not-web' ? 'Android' : p.status === 'closed-source' ? 'Private app' : 'Not live')}</span>`}
+                : `<span class="k-act off">${svg('live')}${esc(p.status === 'broken-deployment' ? 'Deploy 404' : p.status === 'not-web' ? 'Native' : p.status === 'closed-source' ? 'Private app' : 'Not live')}</span>`}
               ${p.private
                 ? `<span class="k-act off">${svg('github')}Closed source</span>`
                 : `<a class="k-act" href="https://github.com/nvkudva/${p.name}" target="_blank" rel="noopener noreferrer">${svg('github')}Source</a>`}

@@ -112,8 +112,12 @@ export const buildingView = () => `
                      'no-deployment':['Not deployed','off'], 'not-web':['Native app','off'],
                      'closed-source':['Closed source','off'] }[p.status]
                    || ['Not deployed','off'];
+        const repo = `https://github.com/nvkudva/${p.name}`;
+        /* Card opens the app; failing that, the public source. Closed-source
+           projects with no deployment stay inert rather than 404. */
+        const openTo = p.deployUrl || p.site || (p.private ? '' : repo);
         return `
-        <article class="k-repo"${p.deployUrl || p.site ? ` data-open="${p.deployUrl || p.site}"` : ''}>
+        <article class="k-repo"${openTo ? ` data-open="${openTo}"` : ''}>
           <div class="k-shot">
             ${p.shot
               ? `<img src="${p.shot}" alt="Screenshot of ${esc(p.title)}" loading="lazy" decoding="async" width="1100" height="688">`
@@ -137,7 +141,7 @@ export const buildingView = () => `
                 : `<span class="k-act off">${svg('live')}${esc(p.status === 'broken-deployment' ? 'Deploy 404' : p.status === 'not-web' ? 'Native' : p.status === 'closed-source' ? 'Private app' : 'Not live')}</span>`}
               ${p.private
                 ? `<span class="k-act off">${svg('github')}Closed source</span>`
-                : `<a class="k-act" href="https://github.com/nvkudva/${p.name}" target="_blank" rel="noopener noreferrer">${svg('github')}Source</a>`}
+                : `<a class="k-act" href="${repo}" target="_blank" rel="noopener noreferrer">${svg('github')}Source</a>`}
             </div>
           </div>
         </article>`;

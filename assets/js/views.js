@@ -53,8 +53,13 @@ function card(p, i) {
     ? `<img src="${p.shot}" alt="Screenshot of ${esc(p.title)}" loading="lazy" decoding="async" width="1100" height="688">`
     : `<div class="noshot"><span>${esc(p.title)}</span><small>${esc(label)}</small></div>`;
 
+  /* The card opens the running app; failing that, the public source. A
+     closed-source project with no deployment has nowhere to go, so it stays
+     inert rather than leading to a 404. */
+  const openTo = p.deployUrl || p.site || (p.private ? '' : repo);
+
   return `
-    <article class="pcard"${p.deployUrl || p.site ? ` data-open="${p.deployUrl || p.site}"` : ''}>
+    <article class="pcard"${openTo ? ` data-open="${openTo}"` : ''}>
       <div class="pshot">${shot}</div>
       <div class="pbody">
         <div class="phead">

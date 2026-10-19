@@ -17,14 +17,6 @@ const portrait = () => `
     <div class="portcap">Bangalore, 2026</div>
   </div>`;
 
-const STATUS = {
-  live: ['Live', 'ok'],
-  'broken-deployment': ['Deploy broken', 'warn'],
-  'no-deployment': ['Not deployed', 'off'],
-  'not-web': ['Native app', 'off'],
-  'closed-source': ['Closed source', 'off'],
-};
-
 /* Two destinations per project, as one split control: the running app on the
    left, the code on the right. A half that has nowhere to go is disabled and
    says why, rather than being hidden. */
@@ -47,11 +39,10 @@ function actions(p, repo) {
 
 /* Project card: screenshot, copy, and a QR to the live URL. */
 function card(p, i) {
-  const [label, tone] = STATUS[p.status] || STATUS['no-deployment'];
   const repo = `https://github.com/nvkudva/${p.name}`;
   const shot = p.shot
     ? `<img src="${p.shot}" alt="Screenshot of ${esc(p.title)}" loading="lazy" decoding="async" width="1100" height="688">`
-    : `<div class="noshot"><span>${esc(p.title)}</span><small>${esc(label)}</small></div>`;
+    : `<div class="noshot"><span>${esc(p.title)}</span></div>`;
 
   /* The card opens the running app; failing that, the public source. A
      closed-source project with no deployment has nowhere to go, so it stays
@@ -64,7 +55,6 @@ function card(p, i) {
       <div class="pbody">
         <div class="phead">
           <h3>${esc(p.title)}</h3>
-          <span class="pstat ${tone}">${esc(label)}</span>
         </div>
         <p>${esc(p.desc)}</p>
         <div class="tags">
@@ -79,9 +69,6 @@ function card(p, i) {
             : ''}
           <div class="pstack">
             ${actions(p, repo)}
-            <small class="phost">${p.private ? 'not public' : p.deployUrl
-              ? esc(p.deployUrl.replace(/^https:\/\//, '').replace(/\/$/, '')) + (p.host ? ` · ${esc(p.host)}` : '')
-              : `github.com/nvkudva/${esc(p.name)}`}</small>
           </div>
         </div>
       </div>
@@ -110,7 +97,6 @@ export const home = () => `
       </div>
       <h1 class="rise" style="animation-delay:.05s">${esc(profile.name)}</h1>
       <p class="lede rise" style="animation-delay:.1s">${profile.lede[0]}</p>
-      <p class="lede rise" style="animation-delay:.14s" >${profile.lede[1]}</p>
       <div class="cta rise" style="animation-delay:.18s">
         <a class="btn primary" href="${profile.resume}" download>Download résumé ↓</a>
         <a class="btn" href="https://www.linkedin.com/in/nvkudva/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -150,8 +136,7 @@ export const projectsView = () => `
   <section>
     <div class="eyebrow">Platforms · shipped at scale</div>
     <h1 style="font-size:clamp(28px,4vw,44px)">Things I built, not things I approved</h1>
-    <p class="sublede">Six platforms that carried real traffic, real agents and real revenue.</p>
-    <div>
+    <div class="openlist">
       ${platforms.map((p) => `
         <article class="plat">
           <div>
@@ -176,7 +161,7 @@ export const buildingView = () => `
   <section>
     <div class="eyebrow">Personal projects · built since May 2025</div>
     <h1 style="font-size:clamp(28px,4vw,44px)">What I'm building now</h1>
-    <p class="sublede">Hands-on applied AI, shipped on evenings and weekends. Scan a code to open the live app on your phone.</p>
+    <p class="sublede">Hands-on applied AI, shipped on evenings and weekends.</p>
   </section>
 
   <section>
@@ -236,7 +221,7 @@ export const resumeView = () => `
     <div class="eyebrow">Education</div>
     <div class="rows">
       ${education.map((e) => `
-        <div class="row"><span class="y">${esc(e.y.slice(0, 4))}</span><span class="t"><b style="color:var(--ink)">${esc(e.d)}</b> — ${esc(e.o)}</span><span class="badge">${esc(e.y)}</span></div>`).join('')}
+        <div class="row"><span class="y">${esc(e.y.slice(0, 4))}</span><span class="t"><b style="color:var(--ink)">${esc(e.d)}</b> — ${esc(e.o)}</span></div>`).join('')}
     </div>
   </section>`;
 

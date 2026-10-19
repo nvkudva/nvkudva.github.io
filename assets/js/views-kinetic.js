@@ -30,8 +30,7 @@ export const home = () => `
         <p class="k-blurb">
           <b>${esc(profile.name)} — 17+ years in technology, 6+ leading engineering orgs.</b>
           I scaled a platform org from 3 to 24+ engineers across the US, India and Brazil,
-          led Uber's first GenAI support bot for business customers, and architected platforms
-          serving 30,000+ agents and 14M+ consumers.
+          and led Uber’s first GenAI support bot for business customers.
         </p>
         <div class="k-acts">
           <a class="k-mag solid" href="${profile.resume}" download>Résumé ↓</a>
@@ -76,7 +75,7 @@ export const projectsView = () => `
   </section>
 
   <section>
-    ${head('Platform<br>work', 'Six systems that<br>carried real traffic')}
+    ${head('Platform<br>work', 'Six systems')}
     <div>
       ${platforms.map((p) => `
         <article class="k-line">
@@ -108,10 +107,6 @@ export const buildingView = () => `
     ${head('Selected<br>repositories', 'github.com/nvkudva<br>drag or scroll →')}
     <div class="k-rail">
       ${projects.map((p, i) => {
-        const st = { live:['Live','ok'], 'broken-deployment':['Deploy broken','warn'],
-                     'no-deployment':['Not deployed','off'], 'not-web':['Native app','off'],
-                     'closed-source':['Closed source','off'] }[p.status]
-                   || ['Not deployed','off'];
         const repo = `https://github.com/nvkudva/${p.name}`;
         /* Card opens the app; failing that, the public source. Closed-source
            projects with no deployment stay inert rather than 404. */
@@ -127,9 +122,7 @@ export const buildingView = () => `
           <h3>${esc(p.title)}</h3>
           <p>${esc(p.desc)}</p>
           <div class="k-stack">
-            <i class="${st[1]}">${esc(st[0])}</i>
             ${p.wip ? '<i class="wip">in progress</i>' : ''}
-            ${p.private ? '<i>\u{1F512} closed source</i>' : ''}
           </div>
           <div class="k-foot">
             ${(p.deployUrl || p.site) && qr[p.name]
@@ -201,7 +194,7 @@ export const resumeView = () => `
     ${head('Education')}
     <div class="k-rows">
       ${education.map((e) => `
-        <div class="k-row"><span class="y">${esc(e.y.slice(0, 4))}</span><span class="t">${esc(e.d)} — ${esc(e.o)}</span><span class="b">${esc(e.y)}</span></div>`).join('')}
+        <div class="k-row"><span class="y">${esc(e.y.slice(0, 4))}</span><span class="t">${esc(e.d)} — ${esc(e.o)}</span></div>`).join('')}
     </div>
   </section>`;
 

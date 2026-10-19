@@ -14,7 +14,6 @@ export const profile = {
 
   lede: [
     'Engineering leader with <em>17+ years in technology</em> and 6+ years building and scaling engineering organizations.',
-    'I scaled a platform org from 3 to 24+ engineers across the US, India and Brazil, led the integration of Uber’s first GenAI support bot for business customers, and architected platforms serving <em>30,000+ global agents and 14M+ consumers</em>.',
   ],
 
   personal:
@@ -336,7 +335,6 @@ export const socials = [
   { n: 'GitHub', h: '@nvkudva', u: 'https://github.com/nvkudva', i: 'github' },
   { n: 'LinkedIn', h: 'in/nvkudva', u: 'https://www.linkedin.com/in/nvkudva/', i: 'linkedin' },
   { n: 'Medium', h: '@nvkudva', u: 'https://medium.com/@nvkudva', i: 'medium' },
-  { n: 'Email', h: 'nvkudva@gmail.com', u: 'mailto:nvkudva@gmail.com', i: 'mail' },
   { n: 'Résumé', h: 'PDF · 98 KB', u: '/public/resume/Vijay-Krishna-Kudva-Resume.pdf', i: 'doc' },
 ];
 

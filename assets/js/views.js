@@ -120,7 +120,7 @@ export const home = () => `
 
   <section>
     <div class="eyebrow">By the numbers</div>
-    <div class="stats" style="margin-top:0">
+    <div class="stats">
       ${stats.map((s) => `<div class="stat"><b>${esc(s.v)}</b><span>${esc(s.k)}</span></div>`).join('')}
     </div>
   </section>
@@ -128,7 +128,7 @@ export const home = () => `
   <section>
     <div class="eyebrow">How I run an engineering org in the AI era</div>
     <h2>Four tenets I actually operate by</h2>
-    <p class="sublede" style="margin-bottom:28px">Not predictions. These are the rules I use to decide where humans spend attention.</p>
+    <p class="sublede">Not predictions. These are the rules I use to decide where humans spend attention.</p>
     <div class="tenets">
       ${tenets.map((t, i) => `
         <div class="tenet">
@@ -147,11 +147,11 @@ export const home = () => `
 /* ------------------------------------------------------------------ */
 
 export const projectsView = () => `
-  <section style="padding-top:24px">
+  <section>
     <div class="eyebrow">Platforms · shipped at scale</div>
     <h1 style="font-size:clamp(28px,4vw,44px)">Things I built, not things I approved</h1>
-    <p class="sublede" style="margin-bottom:22px">Six platforms that carried real traffic, real agents and real revenue.</p>
-    <div style="margin-top:24px">
+    <p class="sublede">Six platforms that carried real traffic, real agents and real revenue.</p>
+    <div>
       ${platforms.map((p) => `
         <article class="plat">
           <div>
@@ -173,13 +173,13 @@ export const projectsView = () => `
 /* ------------------------------------------------------------------ */
 
 export const buildingView = () => `
-  <section style="padding-top:24px">
+  <section>
     <div class="eyebrow">Personal projects · built since May 2025</div>
     <h1 style="font-size:clamp(28px,4vw,44px)">What I'm building now</h1>
-    <p class="sublede" style="margin-bottom:22px">Hands-on applied AI, shipped on evenings and weekends. Scan a code to open the live app on your phone.</p>
+    <p class="sublede">Hands-on applied AI, shipped on evenings and weekends. Scan a code to open the live app on your phone.</p>
   </section>
 
-  <section style="padding-top:0">
+  <section>
     <div class="pgrid">
       ${projects.map((p, i) => card(p, i)).join('')}
     </div>
@@ -191,7 +191,7 @@ export const buildingView = () => `
 /* ------------------------------------------------------------------ */
 
 export const resumeView = () => `
-  <section style="padding-top:24px">
+  <section>
     <div class="eyebrow">Résumé</div>
     <h1 style="font-size:clamp(28px,4vw,44px)">Seventeen years, and still in the editor</h1>
   </section>
@@ -212,7 +212,7 @@ export const resumeView = () => `
   <section>
     <div class="eyebrow">Core strengths</div>
     ${Object.entries(strengths).map(([k, v]) => `
-      <h3 style="margin-top:18px">${esc(k)}</h3>
+      <h3>${esc(k)}</h3>
       <div class="chips">${v.map((s) => `<span class="chip">${esc(s)}</span>`).join('')}</div>`).join('')}
   </section>
 
@@ -243,10 +243,10 @@ export const resumeView = () => `
 /* ------------------------------------------------------------------ */
 
 export const contactView = () => `
-  <section style="padding-top:24px">
+  <section>
     <div class="eyebrow">Contact</div>
     <h1 style="font-size:clamp(28px,4vw,44px)">Let's talk</h1>
-    <p class="lede" style="margin-top:18px">
+    <p class="lede">
       I'm open to senior engineering leadership roles driving AI-forward platform and product engineering at scale.
       Fastest route is email — I reply within a day.
     </p>

@@ -112,11 +112,13 @@
 
 /* ---------------------------------------------------------- type */
 [data-layout="kinetic"] main{padding:0; max-width:none}
-[data-layout="kinetic"] section{padding:56px 0; border-bottom:0}
+[data-layout="kinetic"] section{padding:44px 0; border-bottom:0}
 [data-layout="kinetic"] .k-hero + section{padding-top:16px}
-.k-hero{padding:116px 0 60px !important; position:relative}
-.pane + .pane .k-hero{padding-top:48px !important}
-.pane + .pane > section:first-child{padding-top:48px}
+.k-hero{padding:100px 0 28px !important; position:relative}
+/* These two are Kinetic only: the console panes are spaced by
+   .pane > section:first-child in app.css. */
+[data-layout="kinetic"] .pane + .pane .k-hero{padding-top:40px !important}
+[data-layout="kinetic"] .pane + .pane > section:first-child{padding-top:40px}
 .k-tagline{font-family:var(--kmono); font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--hot); margin-bottom:22px; display:flex; gap:14px; align-items:center}
 .k-tagline::after{content:""; height:1px; width:78px; background:currentColor; opacity:.5}
 [data-layout="kinetic"] h1{
@@ -131,14 +133,14 @@
 .k-up{animation:k-up .9s var(--kease) both}
 @keyframes k-up{from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:none}}
 
-.k-sechead{display:flex; align-items:flex-end; gap:22px; margin-bottom:40px; flex-wrap:wrap}
+.k-sechead{display:flex; align-items:flex-end; gap:22px; margin-bottom:28px; flex-wrap:wrap}
 .k-sechead h2{font-family:var(--kdisp); font-size:clamp(42px,7vw,90px); font-weight:800; text-transform:uppercase; line-height:.85; margin:0; color:var(--kink)}
 .k-note{margin-left:auto; font-family:var(--kmono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--kmuted); text-align:right; line-height:1.8}
 
-.k-herofoot{display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:44px; align-items:end; margin-top:46px}
+.k-herofoot{display:grid; grid-template-columns:minmax(0,1fr); gap:36px; align-items:end; margin-top:34px}
 .k-blurb{font-size:19px; line-height:1.55; color:var(--kink-2); max-width:48ch; margin:0}
 .k-blurb b{color:var(--kink); font-weight:600}
-.k-acts{display:flex; gap:12px; margin-top:28px; flex-wrap:wrap}
+.k-acts{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
 .k-mag{
   padding:15px 28px; border-radius:999px; border:1px solid var(--edge); background:transparent;
   color:var(--kink); font-family:var(--kmono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase;
@@ -160,21 +162,21 @@
 @keyframes k-sheen{0%{transform:translateX(-100%)} 55%,100%{transform:translateX(100%)}}
 .k-framecap{font-family:var(--kmono); font-size:10px; letter-spacing:.12em; color:var(--kmuted); margin-top:10px; text-transform:uppercase}
 
-.k-ticker{border-top:1px solid var(--edge); border-bottom:1px solid var(--edge); overflow:hidden; padding:14px 0; margin-top:56px}
+.k-ticker{border-top:1px solid var(--edge); border-bottom:1px solid var(--edge); overflow:hidden; padding:12px 0; margin-top:44px}
 .k-track{display:flex; gap:44px; width:max-content; animation:k-roll 34s linear infinite; font-family:var(--kdisp); font-size:30px; font-weight:600; text-transform:uppercase; color:var(--kink-2)}
 .k-track b{color:var(--hot); font-weight:600}
 .k-track span{display:flex; gap:44px; white-space:nowrap}
 @keyframes k-roll{to{transform:translateX(-50%)}}
 
 /* ---------------------------------------------------------- blocks */
-.k-tenets{display:grid; grid-template-columns:repeat(auto-fit,minmax(258px,1fr)); gap:18px}
-.k-card{background:var(--stage); border:1px solid var(--edge); border-radius:14px; padding:26px; transition:transform .45s var(--kease), border-color .45s}
+.k-tenets{display:grid; grid-template-columns:repeat(auto-fit,minmax(258px,1fr)); gap:14px}
+.k-card{background:var(--stage); border:1px solid var(--edge); border-radius:14px; padding:22px; transition:transform .45s var(--kease), border-color .45s}
 .k-card:hover{transform:translateY(-6px); border-color:color-mix(in oklab,var(--hot) 55%,transparent)}
 .k-card h3{font-family:var(--kdisp); font-size:27px; font-weight:600; text-transform:uppercase; margin:12px 0 10px; line-height:1; color:var(--kink)}
 .k-card p{font-size:14px; color:var(--kink-2); margin:0}
 .k-no{font-family:var(--kmono); font-size:10.5px; letter-spacing:.16em; color:var(--kmuted)}
 
-.k-line{display:grid; grid-template-columns:150px minmax(0,1fr); gap:24px; padding:26px 0; border-top:1px solid var(--edge); transition:padding-left .4s var(--kease)}
+.k-line{display:grid; grid-template-columns:150px minmax(0,1fr); gap:22px; padding:20px 0; border-top:1px solid var(--edge); transition:padding-left .4s var(--kease)}
 .k-line:hover{padding-left:14px}
 .k-line:last-child{border-bottom:1px solid var(--edge)}
 .k-yr{font-family:var(--kmono); font-size:11px; color:var(--hot); letter-spacing:.06em; padding-top:5px}
@@ -189,12 +191,12 @@
 .k-mx b{display:block; font-family:var(--kdisp); font-size:26px; font-weight:600; line-height:1; color:var(--kink)}
 .k-mx span{font-family:var(--kmono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--kmuted)}
 
-.k-rail{display:flex; gap:20px; overflow-x:auto; padding:6px 0 22px; scroll-snap-type:x mandatory}
+.k-rail{display:flex; gap:16px; overflow-x:auto; padding:6px 0 18px; scroll-snap-type:x mandatory}
 .k-rail::-webkit-scrollbar{height:4px}
 .k-rail::-webkit-scrollbar-thumb{background:var(--edge); border-radius:4px}
 .k-repo{
   flex:0 0 clamp(268px,32vw,368px); scroll-snap-align:start; background:var(--stage);
-  border:1px solid var(--edge); border-radius:14px; padding:26px; display:flex; flex-direction:column;
+  border:1px solid var(--edge); border-radius:14px; padding:22px; display:flex; flex-direction:column;
   min-height:330px; transition:transform .45s var(--kease), border-color .45s;
 }
 .k-repo:hover{transform:translateY(-8px); border-color:color-mix(in oklab,var(--hot) 55%,transparent)}
@@ -207,19 +209,20 @@
 .k-repo:hover .k-arw{transform:translateX(6px)}
 
 .k-chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+.k-chips + .k-org{margin-top:20px}
 .k-chips span{font-family:var(--kmono); font-size:11px; padding:6px 13px; border:1px solid var(--edge); border-radius:999px; color:var(--kink-2); transition:border-color .3s, color .3s}
 .k-chips span:hover{border-color:var(--hot); color:var(--kink)}
 
 .k-rows{border-top:1px solid var(--edge)}
-.k-row{display:grid; grid-template-columns:70px minmax(0,1fr) auto; gap:18px; align-items:baseline; padding:17px 10px; border-bottom:1px solid var(--edge); transition:padding-left .3s var(--kease), background .3s var(--kease)}
+.k-row{display:grid; grid-template-columns:70px minmax(0,1fr) auto; gap:14px; align-items:baseline; padding:13px 8px; border-bottom:1px solid var(--edge); transition:padding-left .3s var(--kease), background .3s var(--kease)}
 .k-row:hover{padding-left:20px; background:var(--stage)}
 .k-row .y{font-family:var(--kmono); font-size:11px; color:var(--kmuted)}
 .k-row .t{font-size:15px; color:var(--kink-2)}
 .k-row .b{font-family:var(--kmono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--hot)}
 
-.k-socials{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); gap:14px}
+.k-socials{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); gap:12px}
 .k-soc{
-  display:flex; align-items:center; gap:13px; padding:20px; border-radius:12px; min-width:0;
+  display:flex; align-items:center; gap:13px; padding:17px; border-radius:12px; min-width:0;
   border:1px solid var(--edge); background:var(--stage);
   transition:transform .35s var(--kease), border-color .35s, background .35s;
 }
@@ -231,7 +234,7 @@
 .k-soc:hover svg{color:var(--hot); transform:scale(1.12)}
 
 /* ---------------------------------------------------------- footer */
-[data-layout="kinetic"] .sitefoot{border-top:1px solid var(--edge); color:var(--kmuted); padding:32px 0 64px}
+[data-layout="kinetic"] .sitefoot{border-top:1px solid var(--edge); color:var(--kmuted); padding:20px 0 40px}
 [data-layout="kinetic"] .sitefoot .swap-b{color:var(--kmuted)}
 [data-layout="kinetic"] .sitefoot .swap-b:hover{color:var(--kink)}
 [data-layout="kinetic"] .sitefoot .swap-b[aria-pressed="true"]{color:var(--hot); border-bottom-color:var(--hot)}
@@ -261,7 +264,7 @@
 }
 
 /* ---------------------------------------------------------- project cards */
-.k-shot{aspect-ratio:16/10; margin:-26px -26px 18px; background:var(--riser); border-bottom:1px solid var(--edge); overflow:hidden}
+.k-shot{aspect-ratio:16/10; margin:-22px -22px 16px; background:var(--riser); border-bottom:1px solid var(--edge); overflow:hidden}
 .k-shot img{width:100%; height:100%; object-fit:cover; object-position:top center; display:block}
 .k-noshot{
   width:100%; height:100%; display:grid; place-content:center; text-align:center;
@@ -281,7 +284,6 @@
 .k-qr:hover{border-color:var(--hot); color:var(--hot); transform:scale(1.05)}
 .k-open{margin-left:auto; color:var(--hot); font-family:var(--kmono); font-size:11.5px; display:flex; align-items:center; gap:8px}
 .k-none{font-family:var(--kmono); font-size:11px; color:var(--kmuted)}
-.k-repo{min-height:430px}
 
 /* the tiny mode switch, in Kinetic's palette */
 [data-layout="kinetic"] .tsw{border-color:var(--edge); background:color-mix(in oklab,var(--stage) 70%,transparent)}

@@ -25,7 +25,7 @@ export const home = () => `
       <span class="k-slide"><span class="k-fill" style="animation-delay:.16s">AI Leader</span></span>
     </h1>
 
-    <div class="k-herofoot" style="grid-template-columns:minmax(0,1fr)">
+    <div class="k-herofoot">
       <div class="k-up" style="animation-delay:.5s">
         <p class="k-blurb">
           <b>${esc(profile.name)} — 17+ years in technology, 6+ leading engineering orgs.</b>
@@ -70,7 +70,7 @@ export const home = () => `
 /* ------------------------------------------------------------------ */
 
 export const projectsView = () => `
-  <section class="k-hero" style="padding-bottom:20px">
+  <section class="k-hero">
     <div class="k-tagline">Platforms · shipped at scale</div>
     <h1 style="font-size:clamp(46px,9vw,124px)">Things I built,<br>not things<br>I <span class="k-fill">approved</span>.</h1>
   </section>
@@ -91,7 +91,7 @@ export const projectsView = () => `
           </div>
         </article>`).join('')}
     </div>
-    <div class="k-acts" style="margin-top:34px">
+    <div class="k-acts">
       <a class="k-mag" href="/building" data-link>What I'm building now →</a>
     </div>
   </section>`;
@@ -99,7 +99,7 @@ export const projectsView = () => `
 /* ------------------------------------------------------------------ */
 
 export const buildingView = () => `
-  <section class="k-hero" style="padding-bottom:20px">
+  <section class="k-hero">
     <div class="k-tagline">Personal projects · since May 2025</div>
     <h1 style="font-size:clamp(46px,9vw,124px)">What I'm<br><span class="k-fill">building</span> now.</h1>
   </section>
@@ -152,10 +152,10 @@ export const buildingView = () => `
 /* ------------------------------------------------------------------ */
 
 export const resumeView = () => `
-  <section class="k-hero" style="padding-bottom:20px">
+  <section class="k-hero">
     <div class="k-tagline">Résumé · ${esc(profile.resumeMeta.updated)}</div>
     <h1 style="font-size:clamp(46px,9vw,124px)">Seventeen years,<br>still in the <span class="k-fill">editor</span>.</h1>
-    <div class="k-acts" style="margin-top:34px">
+    <div class="k-acts">
       <a class="k-mag solid" href="${profile.resume}" download>Download PDF ↓</a>
       <a class="k-mag" href="${profile.resume}" target="_blank" rel="noopener noreferrer">Open in browser</a>
     </div>
@@ -177,7 +177,7 @@ export const resumeView = () => `
   <section>
     ${head('Core<br>strengths')}
     ${Object.entries(strengths).map(([k, v]) => `
-      <div class="k-org" style="margin-top:20px">${esc(k)}</div>
+      <div class="k-org">${esc(k)}</div>
       <div class="k-chips">${v.map((s) => `<span>${esc(s)}</span>`).join('')}</div>`).join('')}
   </section>
 
@@ -208,10 +208,10 @@ export const resumeView = () => `
 /* ------------------------------------------------------------------ */
 
 export const contactView = () => `
-  <section class="k-hero" style="padding-bottom:20px">
+  <section class="k-hero">
     <div class="k-tagline">Contact · replies within a day</div>
     <h1 style="font-size:clamp(52px,11vw,150px)">Say <span class="k-fill">hello</span>.</h1>
-    <p class="k-blurb" style="margin-top:30px">
+    <p class="k-blurb" style="margin-top:22px">
       I'm open to senior engineering leadership roles driving AI-forward platform and
       product engineering at scale. Fastest route is email.
     </p>

@@ -48,29 +48,30 @@ function card(p, i) {
      closed-source project with no deployment has nowhere to go, so it stays
      inert rather than leading to a 404. */
   const openTo = p.deployUrl || p.site || (p.private ? '' : repo);
+  const qrLink = (p.deployUrl || p.site) && qr[p.name]
+    ? `<a class="pqr" href="${p.deployUrl || p.site}" target="_blank" rel="noopener noreferrer" aria-label="Open ${esc(p.title)} on your phone" title="Scan or click to open ${esc(p.title)}">${qr[p.name]}</a>`
+    : '';
 
   return `
-    <article class="pcard"${openTo ? ` data-open="${openTo}"` : ''}>
+    <article class="pcard" id="p-${esc(p.name)}"${openTo ? ` data-open="${openTo}"` : ''}>
       <div class="pshot">${shot}</div>
       <div class="pbody">
         <div class="phead">
           <h3>${esc(p.title)}</h3>
         </div>
         <p>${esc(p.desc)}</p>
-        <div class="tags">
-          ${p.lang ? `<span class="tag lang">${esc(p.lang)}</span>` : ''}
-          ${p.license ? `<span class="tag">${esc(p.license)}</span>` : ''}
-          ${p.wip ? '<span class="tag wip">in progress</span>' : ''}
-          ${p.private ? '<span class="tag lock">closed source</span>' : ''}
-        </div>
-        <div class="pfoot">
-          ${(p.deployUrl || p.site) && qr[p.name]
-            ? `<a class="pqr" href="${p.deployUrl || p.site}" target="_blank" rel="noopener noreferrer" aria-label="Open ${esc(p.title)} on your phone" title="Scan or click to open ${esc(p.title)}">${qr[p.name]}</a>`
-            : ''}
+        <div class="pmeta">
+          <div class="tags">
+            ${p.lang ? `<span class="tag lang">${esc(p.lang)}</span>` : ''}
+            ${p.license ? `<span class="tag">${esc(p.license)}</span>` : ''}
+            ${p.wip ? '<span class="tag wip">in progress</span>' : ''}
+            ${p.private ? '<span class="tag lock">closed source</span>' : ''}
+          </div>
           <div class="pstack">
             ${actions(p, repo)}
           </div>
         </div>
+        ${qrLink ? `<div class="pfoot">${qrLink}</div>` : ''}
       </div>
       <span class="pno">${String(i + 1).padStart(2, '0')}</span>
     </article>`;
@@ -172,8 +173,19 @@ export const buildingView = () => `
 /* ------------------------------------------------------------------ */
 
 export const resumeView = () => `
-  <section>
+  <section class="resumetop">
+    <div class="eyebrow">Résumé</div>
     <h1 style="font-size:clamp(28px,4vw,44px)">Experience</h1>
+  </section>
+
+  <section id="strengths">
+    <div class="eyebrow">Core strengths</div>
+    ${Object.entries(strengths).map(([k, v]) => `
+      <h3>${esc(k)}</h3>
+      <div class="chips">${v.map((s) => `<span class="chip">${esc(s)}</span>`).join('')}</div>`).join('')}
+  </section>
+
+  <section id="experience">
     ${experience.map((e) => `
       <article class="job">
         <div><div class="when">${esc(e.years)}</div><div class="where">${esc(e.where)}</div></div>
@@ -183,13 +195,6 @@ export const resumeView = () => `
           <ul>${e.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
         </div>
       </article>`).join('')}
-  </section>
-
-  <section>
-    <div class="eyebrow">Core strengths</div>
-    ${Object.entries(strengths).map(([k, v]) => `
-      <h3>${esc(k)}</h3>
-      <div class="chips">${v.map((s) => `<span class="chip">${esc(s)}</span>`).join('')}</div>`).join('')}
   </section>
 
   <section>

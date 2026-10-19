@@ -232,6 +232,15 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 .chip{font-family:var(--mono); font-size:11.5px; padding:5px 11px; border:1px solid var(--line); border-radius:20px; color:var(--ink-2); background:var(--surface); transition:border-color .25s, color .25s}
 .chip:hover{border-color:var(--accent); color:var(--ink)}
 
+/* ---- résumé header + compact strengths ---- */
+.resumetop{padding-bottom:8px}
+#strengths{padding:14px 0 10px}
+#strengths .eyebrow{margin-bottom:8px}
+#strengths h3{font-size:13.5px; margin:0}
+#strengths .chips{gap:6px; margin-top:6px}
+#strengths .chips + h3{margin-top:12px}
+#strengths .chip{font-size:10.5px; padding:3px 9px}
+
 .rows{border-top:1px solid var(--line)}
 .row{display:grid; grid-template-columns:64px minmax(0,1fr) auto; gap:14px; align-items:baseline; padding:11px 8px; border-bottom:1px solid var(--line); transition:background .26s var(--ease), padding-left .26s var(--ease)}
 .row:hover{background:var(--surface); padding-left:14px}
@@ -359,15 +368,16 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 }
 
 /* ============================================================ project cards */
-.pgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:14px}
+.pgrid{display:grid; grid-template-columns:1fr; gap:14px}
 .pcard{
-  position:relative; display:flex; flex-direction:column; border:1px solid var(--line); border-radius:10px;
-  background:var(--surface); overflow:hidden;
+  position:relative; display:grid; grid-template-columns:minmax(0,1fr) min(42%,440px); border:1px solid var(--line); border-radius:10px;
+  background:var(--surface); overflow:hidden; container-type:inline-size;
   transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
 }
 .pcard:hover{transform:translateY(-4px); border-color:var(--accent); box-shadow:var(--shadow)}
-.pshot{position:relative; aspect-ratio:16/10; background:var(--surface-2); border-bottom:1px solid var(--line); overflow:hidden}
-.pshot img{width:100%; height:100%; object-fit:cover; object-position:top center; display:block}
+.pshot{position:relative; grid-column:2; grid-row:1; aspect-ratio:1100/688; background:var(--surface-2); border-left:1px solid var(--line); overflow:hidden}
+.pbody{grid-column:1; grid-row:1; min-height:0; max-height:calc(min(42cqw, 440px) * 688 / 1100); overflow:hidden}
+.pshot img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; display:block}
 .pno{
   position:absolute; bottom:10px; right:10px; font-family:var(--mono); font-size:10px; letter-spacing:.1em;
   padding:3px 8px; border-radius:4px; background:var(--paper); color:var(--muted); border:1px solid var(--line);
@@ -378,13 +388,15 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 }
 .noshot span{font-size:19px; font-weight:600; letter-spacing:-.02em}
 
-.pbody{padding:15px; display:flex; flex-direction:column; flex:1; gap:8px}
+.pbody{padding:14px 20px; display:flex; flex-direction:column; justify-content:center; min-width:0; gap:8px}
 .phead{display:flex; align-items:center; gap:10px}
 .phead h3{font-size:18px; flex:1; min-width:0}
 .pbody p{font-size:14.5px; margin:0; color:var(--ink-2)}
-.pbody .tags{margin-top:auto}
+.pbody .pmeta{margin-top:auto}
+.pmeta{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.pmeta .tags{flex:1 1 auto; min-width:0}
 
-.pfoot{display:flex; align-items:center; gap:12px; padding-top:10px; border-top:1px solid var(--line)}
+.pfoot{display:flex; align-items:center; gap:12px; padding-top:4px}
 .pqr{
   width:82px; height:82px; flex:none; padding:7px; border:1px solid var(--line); border-radius:7px;
   background:var(--surface); color:var(--ink); display:block;
@@ -414,16 +426,16 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 
 /* ---- two destinations per project: the app, and the code ---- */
 .pfoot{align-items:flex-start}
-.pstack{display:flex; flex-direction:column; gap:7px; flex:1; min-width:0}
-.pacts{display:flex; border:1px solid var(--line); border-radius:8px; overflow:hidden}
+.pmeta .pstack{display:flex; flex:none; margin-left:auto}
+.pacts{display:flex; border:1px solid var(--line); border-radius:6px; overflow:hidden}
 .pact{
-  flex:1; min-width:0; display:flex; align-items:center; justify-content:center; gap:8px;
-  padding:11px 10px; background:var(--surface); color:var(--ink-2);
-  font-family:var(--mono); font-size:11.5px; letter-spacing:.03em; white-space:nowrap;
+  flex:none; display:flex; align-items:center; justify-content:center; gap:6px;
+  padding:5px 9px; background:var(--surface); color:var(--ink-2);
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.03em; white-space:nowrap;
   transition:background .22s var(--ease), color .22s var(--ease);
 }
 .pact + .pact{border-left:1px solid var(--line)}
-.pact svg{width:13px; height:13px; fill:currentColor; flex:none}
+.pact svg{width:11px; height:11px; fill:currentColor; flex:none}
 .pact:hover{background:var(--accent); color:var(--on-accent)}
 .pact.off{color:var(--muted); background:var(--surface-2); cursor:not-allowed}
 .pact.off:hover{background:var(--surface-2); color:var(--muted)}
@@ -472,13 +484,16 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
   .row .y{font-size:9.5px}
   .row .t{font-size:12.5px}
   .pgrid{gap:12px}
-  .pbody{padding:11px; gap:8px}
+  .pcard{display:flex; flex-direction:column}
+  .pshot{grid-column:auto; grid-row:auto; width:auto; aspect-ratio:16/10; border-left:0; border-bottom:1px solid var(--line)}
+  .pno{top:10px; bottom:auto}
+  .pbody{grid-column:auto; grid-row:auto; max-height:none; overflow:visible; padding:11px; gap:8px}
   .phead h3{font-size:16px}
   .pbody p{font-size:11.5px}
   .pno{font-size:9px}
   .noshot span{font-size:17px}
-  .pfoot{padding-top:10px}
-  .pact{font-size:9px; padding:8px 6px}
+  .pfoot{padding-top:4px}
+  .pact{font-size:9px; padding:5px 6px}
   .links{gap:8px}
   .link{font-size:9.5px; padding:11px 10px}
   .link small{font-size:9px}

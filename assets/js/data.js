@@ -161,12 +161,6 @@ export const projects = [
     desc: 'A tech demo: real-time cloth physics on a mobile web page. Every garment is a cloth simulation on a hanger, solved in plain JavaScript and drawn with WebGL through Three.js.',
   },
   {
-    name: 'ai-newtab', title: 'AI Homepage', lang: 'TypeScript', updated: '2026-10-08',
-    status: 'no-deployment',
-    shot: '/public/shots/ai-newtab.jpg',
-    desc: 'A new tab that reads the internet for you. An agent looks at what you actually browse and writes a fresh homepage from it — rebuilt in the background, in whatever style you describe.',
-  },
-  {
     name: 'ollajev', title: 'Ollajev', lang: 'Python', updated: '2026-10-08',
     status: 'live',
     deployUrl: 'https://nvkudva.github.io/ollajev/',
@@ -174,13 +168,9 @@ export const projects = [
     desc: 'Like Ollama, for decision models. Pull a System One model from Hugging Face and run it on your machine behind the same /v1/systemone API as the hosted Jev.',
   },
   {
-    name: 'obedient-ai', title: 'obedient-ai', lang: 'Shell', updated: '2026-10-03',
-    status: 'no-deployment',
-    desc: 'A Claude Code plugin that loads a fixed set of terse standing rules into every session, so you stop repeating the same instructions.',
-  },
-  {
     name: 'mini-harness', title: 'Mini Harness', lang: 'JavaScript', updated: '2026-10-01',
     status: 'no-deployment',
+    shot: '/public/shots/mini-harness.jpg',
     desc: 'A coding agent in about 160 lines of Node.js. No dependencies, and it works with any OpenAI-compatible local LLM.',
   },
   {
@@ -188,13 +178,6 @@ export const projects = [
     status: 'no-deployment',
     shot: '/public/shots/laya-server.jpg',
     desc: 'A local FastAPI server for the Laya decision model. A drop-in replacement for TypeSafe’s Jev API that returns calibrated probabilities from one forward pass.',
-  },
-  {
-    name: 'laya-web', title: 'Laya Web', lang: 'TypeScript', updated: '2026-09-21',
-    status: 'live',
-    deployUrl: 'https://laya-web.pages.dev',
-    shot: '/public/shots/laya-web.jpg',
-    desc: 'The Laya decision model running entirely in the browser. 8-bit weights, no backend, nothing leaves the tab.',
   },
   {
     name: 'Smart-News', title: 'SmartNews', lang: 'TypeScript', updated: '2026-09-08',
@@ -252,12 +235,6 @@ export const projects = [
     shot: '/public/shots/maga-lang.jpg',
     desc: 'A toy programming language with Kannada keywords, and a zero-build browser playground for writing and running it — `helu maga` instead of `print`.',
   },
-  {
-    name: 'ask-my-brain', title: 'Ask My Brain', lang: 'HTML', updated: '2026-09-07',
-    wip: true, status: 'no-deployment', draft: true,
-    shot: '/public/shots/ask-my-brain.jpg',
-    desc: 'A personal RAG surface — ask questions against your own accumulated notes and documents.',
-  },
 ];
 
 export const experience = [
@@ -305,6 +282,7 @@ export const experience = [
 
 export const strengths = {
   Leadership: ['Org design & scaling', 'Platform strategy & architecture', 'GenAI adoption', 'Cross-geo execution', 'Leadership development', 'Operational excellence', 'Stakeholder management'],
+  'Applied AI': ['AI agents', 'Multi-agent orchestration', 'RAG', 'Local LLMs', 'On-device inference', 'WebAssembly inference', 'Coding agents', 'Voice interfaces'],
   Technical: ['JavaScript', 'React', 'Node.js', 'GraphQL', 'Web architecture', 'PWA', 'RPC', 'Microservices', 'Java'],
 };
 

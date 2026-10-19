@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-layout="console" data-skin="pro" data-mode="light">
+<html lang="en" data-mode="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -15,22 +15,19 @@
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
 
-<!-- Stamp the saved look before first paint so the page never flashes the wrong layout. -->
+<!-- Stamp the saved look before first paint so the page never flashes the wrong mode. -->
 <script>
   try {
     var s = JSON.parse(localStorage.getItem('vk.theme') || '{}');
     var r = document.documentElement;
-    r.dataset.layout = s.layout === 'kinetic' ? 'kinetic' : 'console';
-    r.dataset.skin = s.skin === 'cyber' ? 'cyber' : 'pro';
     r.dataset.mode = s.mode === 'dark' ? 'dark' : 'light';
   } catch (e) {}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;700&family=Saira:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Saira:wght@300;400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/css/app.css">
-<link rel="stylesheet" href="/assets/css/kinetic.css">
 </head>
 <body>
 

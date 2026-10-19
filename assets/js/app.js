@@ -1,6 +1,5 @@
 import * as consoleViews from './views.js';
-import * as kineticViews from './views-kinetic.js';
-import { mountShell, syncShell, ambient } from './shell.js';
+import { mountShell, syncShell } from './shell.js';
 
 /* The app decides where a load lands (a deep link is a scroll position now),
    so the browser must not restore the previous one over the top of it. */
@@ -10,8 +9,6 @@ const root = document.documentElement;
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
 const state = {
-  layout: root.dataset.layout === 'kinetic' ? 'kinetic' : 'console',
-  skin: root.dataset.skin === 'cyber' ? 'cyber' : 'pro',
   mode: root.dataset.mode === 'dark' ? 'dark' : 'light',
 };
 
@@ -34,19 +31,14 @@ const TITLES = {
   '/contact': 'Contact — Vijay Krishna Kudva',
 };
 
-const views = () => (state.layout === 'kinetic' ? kineticViews : consoleViews);
-
-
 /* ---------------- persistence ---------------- */
 function save() {
   try { localStorage.setItem('vk.theme', JSON.stringify(state)); } catch { /* private mode */ }
 }
 function stamp() {
-  root.dataset.layout = state.layout;
-  root.dataset.skin = state.skin;
   root.dataset.mode = state.mode;
   themeMeta.content = getComputedStyle(root)
-    .getPropertyValue(state.layout === 'kinetic' ? '--void' : '--paper').trim();
+    .getPropertyValue('--paper').trim();
   save();
 }
 
@@ -58,14 +50,11 @@ function markNav(path) {
   });
 }
 
-/* The sticky rail (mobile) and the fixed kinetic header sit over the page,
-   so panes need to stop below them. */
+/* The sticky rail (mobile) sits over the page, so panes need to stop below it. */
 function stick() {
-  const k = document.querySelector('.k-head');
   const rail = document.querySelector('.rail');
   let h = 0;
-  if (k) h = k.getBoundingClientRect().height;
-  else if (rail && matchMedia('(max-width:960px)').matches) h = rail.getBoundingClientRect().height;
+  if (rail && matchMedia('(max-width:960px)').matches) h = rail.getBoundingClientRect().height;
   root.style.setProperty('--stick', `${Math.round(h)}px`);
 }
 
@@ -96,7 +85,7 @@ function watchPanes() {
 }
 
 function paint() {
-  document.getElementById('main').innerHTML = views().page();
+  document.getElementById('main').innerHTML = consoleViews.page();
   stick();
   watchPanes();
   markNav(location.pathname);
@@ -153,9 +142,8 @@ function settle(el, mine) {
 
 function remount() {
   const here = location.pathname;
-  mountShell(state.layout);
+  mountShell();
   paint();
-  ambient();
   jump(here, false);
 }
 
@@ -184,19 +172,9 @@ document.addEventListener('click', (e) => {
   const act = e.target.closest('[data-act]');
   if (act) {
     const [kind, val] = act.dataset.act.split(':');
-    if (kind === 'skin') {
-      state.skin = val === 'toggle' ? (state.skin === 'cyber' ? 'pro' : 'cyber') : val;
-      /* each persona carries its own daylight; the mode control still overrides after */
-      state.mode = state.skin === 'cyber' ? 'dark' : 'light';
-      animate(() => { stamp(); syncShell(); });
-    } else if (kind === 'mode') {
+    if (kind === 'mode') {
       state.mode = val === 'toggle' ? (state.mode === 'dark' ? 'light' : 'dark') : val;
       animate(() => { stamp(); syncShell(); });
-    } else if (kind === 'layout') {
-      const next = val === 'toggle' ? (state.layout === 'kinetic' ? 'console' : 'kinetic') : val;
-      if (next === state.layout) return;
-      state.layout = next;
-      animate(() => { stamp(); remount(); });
     }
     return;
   }

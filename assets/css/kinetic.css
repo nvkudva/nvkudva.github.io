@@ -140,6 +140,7 @@
 .k-herofoot{display:grid; grid-template-columns:minmax(0,1fr); gap:36px; align-items:end; margin-top:34px}
 .k-blurb{font-size:19px; line-height:1.55; color:var(--kink-2); max-width:48ch; margin:0}
 .k-blurb b{color:var(--kink); font-weight:600}
+.k-bio{margin-top:16px; max-width:56ch}
 .k-acts{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
 .k-mag{
   padding:15px 28px; border-radius:999px; border:1px solid var(--edge); background:transparent;

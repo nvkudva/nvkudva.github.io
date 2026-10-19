@@ -151,6 +151,8 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 .statusline b{color:var(--pos); font-weight:500}
 .lede{font-size:18.5px; line-height:1.58; color:var(--ink-2); max-width:58ch; margin-top:12px}
 .lede em{color:var(--ink); font-style:normal; font-weight:600}
+/* The one human line, right above the calls to action. */
+.bio{font-size:17px; line-height:1.62; margin-top:14px; max-width:64ch}
 .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px}
 .btn{
   font-family:var(--mono); font-size:12.5px; letter-spacing:.04em;
@@ -440,6 +442,7 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
   .pane > section:first-child{padding-top:14px}
   .statusline{font-size:9px; margin-bottom:12px}
   .lede{font-size:14px; margin-top:12px}
+  .bio{font-size:12.5px; margin-top:10px}
   .cta{margin-top:16px}
   .btn{font-size:9.5px; padding:8px 12px}
   .eyebrow{font-size:9px; margin-bottom:10px}

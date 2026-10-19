@@ -32,6 +32,7 @@ export const home = () => `
           I scaled a platform org from 3 to 24+ engineers across the US, India and Brazil,
           and led Uber’s first GenAI support bot for business customers.
         </p>
+        <p class="k-blurb k-bio">${esc(profile.personal)}</p>
         <div class="k-acts">
           <a class="k-mag solid" href="${profile.resume}" download>Résumé ↓</a>
           <a class="k-mag" href="https://www.linkedin.com/in/nvkudva/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -59,11 +60,6 @@ export const home = () => `
           <p>${esc(t.d)}</p>
         </article>`).join('')}
     </div>
-  </section>
-
-  <section>
-    ${head('Off the<br>clock')}
-    <p class="k-blurb" style="max-width:56ch">${esc(profile.personal)}</p>
   </section>`;
 
 /* ------------------------------------------------------------------ */

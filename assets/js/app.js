@@ -30,7 +30,7 @@ const TITLES = {
   '/': 'Vijay Krishna Kudva — Engineering Leader',
   '/projects': 'Projects — Vijay Krishna Kudva',
   '/building': 'Building — Vijay Krishna Kudva',
-  '/resume': 'Résumé — Vijay Krishna Kudva',
+  '/resume': 'Experience — Vijay Krishna Kudva',
   '/contact': 'Contact — Vijay Krishna Kudva',
 };
 

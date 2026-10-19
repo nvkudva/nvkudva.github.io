@@ -97,6 +97,7 @@ export const home = () => `
       </div>
       <h1 class="rise" style="animation-delay:.05s">${esc(profile.name)}</h1>
       <p class="lede rise" style="animation-delay:.1s">${profile.lede[0]}</p>
+      <p class="bio rise" style="animation-delay:.14s">${esc(profile.personal)}</p>
       <div class="cta rise" style="animation-delay:.18s">
         <a class="btn primary" href="${profile.resume}" download>Download résumé ↓</a>
         <a class="btn" href="https://www.linkedin.com/in/nvkudva/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -123,11 +124,6 @@ export const home = () => `
           <p>${esc(t.d)}</p>
         </div>`).join('')}
     </div>
-  </section>
-
-  <section>
-    <div class="eyebrow">Off the clock</div>
-    <p style="font-size:17px">${esc(profile.personal)}</p>
   </section>`;
 
 /* ------------------------------------------------------------------ */
@@ -177,12 +173,7 @@ export const buildingView = () => `
 
 export const resumeView = () => `
   <section>
-    <div class="eyebrow">Résumé</div>
-    <h1 style="font-size:clamp(28px,4vw,44px)">Seventeen years, and still in the editor</h1>
-  </section>
-
-  <section>
-    <div class="eyebrow">Experience</div>
+    <h1 style="font-size:clamp(28px,4vw,44px)">Experience</h1>
     ${experience.map((e) => `
       <article class="job">
         <div><div class="when">${esc(e.years)}</div><div class="where">${esc(e.where)}</div></div>

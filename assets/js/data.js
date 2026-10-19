@@ -5,7 +5,6 @@ export const profile = {
   role: 'Engineering Leader — Platforms & Global Teams',
   pedigree: 'Ex Uber · Myntra · Intuit',
   location: 'Bangalore, India',
-  timezone: 'IST · UTC+5:30',
   status: 'Open to Senior Engineering Leadership roles',
   email: 'nvkudva@gmail.com',
   phones: ['+91 96325 44966', '+1 650 772 1555'],

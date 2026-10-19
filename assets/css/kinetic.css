@@ -271,8 +271,6 @@
   font-family:var(--kdisp); font-size:26px; font-weight:600; text-transform:uppercase; color:var(--kmuted);
   background:repeating-linear-gradient(45deg,transparent 0 9px,color-mix(in oklab,var(--edge) 55%,transparent) 9px 10px);
 }
-.k-stack i.ok{color:var(--hot); border-color:color-mix(in oklab,var(--hot) 45%,transparent)}
-.k-stack i.warn{color:var(--hot-2); border-color:color-mix(in oklab,var(--hot-2) 45%,transparent)}
 .k-repo[data-open]{cursor:pointer}
 .k-stack i.wip{color:var(--hot-2); border-color:color-mix(in oklab,var(--hot-2) 45%,transparent)}
 .k-qr{
@@ -282,8 +280,6 @@
 }
 .k-qr svg{display:block; width:100%; height:100%}
 .k-qr:hover{border-color:var(--hot); color:var(--hot); transform:scale(1.05)}
-.k-open{margin-left:auto; color:var(--hot); font-family:var(--kmono); font-size:11.5px; display:flex; align-items:center; gap:8px}
-.k-none{font-family:var(--kmono); font-size:11px; color:var(--kmuted)}
 
 /* the tiny mode switch, in Kinetic's palette */
 [data-layout="kinetic"] .tsw{border-color:var(--edge); background:color-mix(in oklab,var(--stage) 70%,transparent)}

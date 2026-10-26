@@ -107,8 +107,7 @@ export const home = () => `
   <section class="hero">
     <div>
       <div class="statusline rise" style="animation-delay:.06s">
-        <span>${esc(profile.location)}</span><span class="sep">·</span>
-        <span><b>●</b> ${esc(profile.status)}</span>
+        <span>${esc(profile.location)}</span>
       </div>
       <div class="herohead rise" style="animation-delay:.05s">
         <h1>${esc(profile.name)}</h1>
@@ -217,7 +216,7 @@ export const resumeView = () => `
             ${e.roles ? `<div class="rng">${esc(r.years)}${r.where ? ` · ${esc(r.where)}` : ''}</div>` : ''}
             <ul>${r.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
             ${r.built ? `<div class="built"><span class="blabel">Projects</span>${r.built.map(miniProject).join('')}</div>` : ''}
-            ${r.builtProjects ? `<div class="built"><span class="blabel">Shipped</span>${r.builtProjects.map(shippedProject).join('')}</div>` : ''}
+            ${r.builtProjects ? `<div class="built"><span class="blabel">Projects</span>${r.builtProjects.map(shippedProject).join('')}</div>` : ''}
           </div>`).join('')}
         </div>
       </article>`).join('')}

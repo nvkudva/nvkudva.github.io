@@ -67,7 +67,7 @@ export const platforms = [
     metrics: [['1st', 'GenAI bot for B2B support']],
   },
   {
-    name: 'Global UI Platform Modernization',
+    name: 'UI Platform Modernization',
     org: 'Uber',
     years: '2020 – 2023',
     body: 'Led 16+ engineers through the modernization of Uber’s complete Customer Care UI platform. Cut the widget migration process from 15 steps and 23 statuses to 7.',
@@ -145,7 +145,7 @@ export const projects = [
     desc: 'Every local model your app needs, behind one port. A local CLI that runs, supervises and serves chat, decisions, embeddings, images, video, speech-to-text and text-to-speech. Apps ask for a role, never a model name or engine port, so any OpenAI SDK works; each worker is isolated and restarted on its own, with a live playground.',
   },
   {
-    name: 'vega-web', title: 'Vega Web', lang: 'TypeScript', updated: '2026-10-12',
+    name: 'vega-web', title: 'Vega', lang: 'TypeScript', updated: '2026-10-12',
     wip: true, status: 'live',
     deployUrl: 'https://vega-onnx.pages.dev',
     shot: '/public/shots/vega-web.jpg',
@@ -360,9 +360,9 @@ export const experience = [
 ];
 
 export const strengths = {
-  Leadership: ['Org design & scaling', 'Platform strategy & architecture', 'GenAI adoption', 'Cross-geo execution', 'Operational excellence'],
+  Leadership: ['Org design & scaling', 'GenAI adoption', 'Platform strategy & architecture', 'Cross-geo execution', 'Operational excellence'],
   'Applied AI': ['AI agents', 'Multi-agent orchestration','Local LLMs', 'On-device inference', 'WebAssembly inference', 'Coding agents', 'Voice interfaces'],
-  Technical: ['TypeScript', 'JavaScript', 'React', 'Node.js', 'Python', 'GraphQL', 'Webpack', 'Web architecture', 'PWA', 'RPC', 'Microservices', 'Java'],
+  Technical: ['JavaScript', 'React', 'Node.js', 'GraphQL', 'Webpack', 'Web architecture', 'PWA', 'RPC', 'Microservices', 'Java'],
 };
 
 export const speaking = [

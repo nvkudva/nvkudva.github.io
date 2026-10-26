@@ -277,13 +277,14 @@ export const experience = [
   {
     org: 'AI & Tech Enthusiast',
     years: 'May 2025 – Present', where: 'India',
-    title: 'Applied AI sabbatical: prototyping the software factory',
+    title: 'Applied AI Sabbatical : Prototyping the software factory',
     builtProjects: ['omni-api', 'vega-web', 'Smart-News', 'HyperLight'],
     points: [
+      'Planned break after relocating from the US to India; used it to go deep, hands-on, into applied AI.',
       'Spent a year as my own engineering org: agents as the team, me on intent, review and release; a live test of what a software factory needs.',
-      'Shipped multiple projects, from in-browser ML to a local model gateway to consumer apps. Several ran side by side in my own little AI software factory, while I experimented with multiple agent orchestration tools such as Orca and T3 Code.',
+      'Shipped multiple projects across diverse scope and platforms. Several ran side by side in my own little AI software factory, while I experimented with multiple agent orchestration tools.',
       'Tested local open-weight models for real coding work, the cost, privacy and build-vs-buy call every AI-native team will face.',
-      'Next: build and lead the AI-native engineering team; humans set intent and quality bars, agent pipelines do the repeatable work.',
+      'Next: build and lead the AI-native engineering team; humans set intent and quality bars, agent pipelines do the repeatable work in a self learning and evolving loop.',
     ],
   },
   {

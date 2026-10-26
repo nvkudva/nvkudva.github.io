@@ -108,8 +108,7 @@ export const home = () => `
     <div>
       <div class="statusline rise">
         <span>${esc(profile.location)}</span><span class="sep">·</span>
-        <span><b>●</b> ${esc(profile.status)}</span><span class="sep">·</span>
-        <span>${esc(profile.pedigree)}</span>
+        <span><b>●</b> ${esc(profile.status)}</span>
       </div>
       <div class="herohead rise" style="animation-delay:.05s">
         <h1>${esc(profile.name)}</h1>
@@ -117,6 +116,7 @@ export const home = () => `
       </div>
       <p class="lede rise" style="animation-delay:.1s">${profile.lede[0]}</p>
       <p class="bio rise" style="animation-delay:.14s">${esc(profile.personal)}</p>
+      <div class="pedigree rise" style="animation-delay:.18s">${esc(profile.pedigree)}</div>
     </div>
   </section>
 

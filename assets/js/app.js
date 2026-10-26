@@ -24,11 +24,11 @@ const idFor = (path) => (ROUTES.find(([p]) => p === path) || ROUTES[0])[1];
 const pathFor = (id) => (ROUTES.find(([, i]) => i === id) || ROUTES[0])[0];
 
 const TITLES = {
-  '/': 'Vijay Krishna Kudva — Engineering Leader',
-  '/projects': 'Projects — Vijay Krishna Kudva',
-  '/building': 'Building — Vijay Krishna Kudva',
-  '/resume': 'Experience — Vijay Krishna Kudva',
-  '/contact': 'Contact — Vijay Krishna Kudva',
+  '/': 'Vijay Krishna Kudva | Engineering Leader',
+  '/projects': 'Projects | Vijay Krishna Kudva',
+  '/building': 'Building | Vijay Krishna Kudva',
+  '/resume': 'Experience | Vijay Krishna Kudva',
+  '/contact': 'Contact | Vijay Krishna Kudva',
 };
 
 /* ---------------- persistence ---------------- */
@@ -50,12 +50,35 @@ function markNav(path) {
   });
 }
 
-/* The sticky rail (mobile) sits over the page, so panes need to stop below it. */
+/* The sticky rail (mobile) sits over the page, so panes need to stop below it.
+   The compact bar does the same job on a desktop. */
 function stick() {
   const rail = document.querySelector('.rail');
   let h = 0;
   if (rail && matchMedia('(max-width:960px)').matches) h = rail.getBoundingClientRect().height;
+  const bar = document.querySelector('.topbar');
+  if (bar && getComputedStyle(bar).display !== 'none') h += bar.offsetHeight;
   root.style.setProperty('--stick', `${Math.round(h)}px`);
+}
+
+/* The compact bar repeats only what still matters once the hero is gone.
+   It slides in as the big name leaves, and never competes with it. */
+function watchTopbar() {
+  const bar = document.querySelector('.topbar');
+  if (!bar) return;
+  let queued = false;
+  const update = () => {
+    const hero = document.querySelector('#overview .hero');
+    const past = window.scrollY > 24 && (!hero || hero.getBoundingClientRect().bottom < 64);
+    bar.classList.toggle('on', past);
+  };
+  addEventListener('scroll', () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; update(); });
+  }, { passive: true });
+  addEventListener('resize', update);
+  update();
 }
 
 /* Programmatic scrolls pass over every pane in between; the spy stays quiet
@@ -88,9 +111,27 @@ function paint() {
   document.getElementById('main').innerHTML = consoleViews.page();
   stick();
   watchPanes();
+  hookVideos();
   markNav(location.pathname);
   document.title = TITLES[location.pathname] || TITLES['/'];
   syncShell();
+}
+
+/* Films stay silent and controlless, and play on their own as soon as a card
+   is in view — the still is only a poster while the film loads. */
+function hookVideos() {
+  const cards = [...document.querySelectorAll('.pcard')].filter((c) => c.querySelector('video'));
+  if (!cards.length) return;
+  if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      const v = e.target.querySelector('video');
+      if (e.isIntersecting) v.play().catch(() => {});
+      else v.pause();
+    });
+  }, { threshold: 0.4 });
+  cards.forEach((c) => io.observe(c));
 }
 
 function jump(path, smooth, targetId) {
@@ -190,7 +231,7 @@ document.addEventListener('click', (e) => {
   if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
   const path = new URL(a.href).pathname;
   e.preventDefault();
-  go(path, true, a.dataset.target);
+  go(path, true, a.dataset.target || a.hash.slice(1));
 });
 
 addEventListener('popstate', () => go(location.pathname, false));
@@ -198,6 +239,7 @@ addEventListener('resize', stick);
 
 stamp();
 remount();
+watchTopbar();
 
 /* ---------------- pwa + update flow ---------------- */
 function showUpdateToast(waiting) {

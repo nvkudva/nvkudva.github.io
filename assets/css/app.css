@@ -82,6 +82,47 @@ button{font:inherit}
 .nav a[aria-current]::before{height:17px}
 .ctl{display:flex; flex-direction:column; gap:6px; margin-top:auto}
 
+/* The hero, reduced to its essentials: on a desktop the rail already holds the
+   nav, so this bar only appears once the hero has scrolled away — the name and
+   role sliding down into it as the big type leaves. */
+.topbar{
+  position:fixed; top:0; left:var(--rail); right:0; z-index:30; height:52px;
+  display:none; align-items:center; gap:14px; padding:0 clamp(20px,4vw,64px);
+  background:var(--paper);
+  background:color-mix(in srgb, var(--paper) 84%, transparent);
+  backdrop-filter:blur(16px) saturate(1.25); -webkit-backdrop-filter:blur(16px) saturate(1.25);
+  border-bottom:1px solid var(--line);
+  transform:translateY(-100%); opacity:0; pointer-events:none;
+  transition:transform .44s var(--ease), opacity .26s var(--ease), background .45s var(--ease), border-color .45s var(--ease);
+}
+.topbar.on{transform:none; opacity:1; pointer-events:auto}
+.topbar > *{
+  opacity:0; transform:translateY(10px);
+  transition:opacity .34s var(--ease), transform .44s var(--ease);
+}
+.topbar.on > *{opacity:1; transform:none}
+.topbar.on > :nth-child(2){transition-delay:.05s}
+.topbar.on > :nth-child(3){transition-delay:.1s}
+.tb-name{font-size:15px; font-weight:600; letter-spacing:-.012em; transition-property:font-size,opacity,transform}
+.tb-role{font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:var(--muted)}
+.tb-acts{margin-left:auto; display:flex; align-items:center; gap:16px}
+.tba{
+  display:inline-flex; align-items:center; gap:7px; white-space:nowrap;
+  font-family:var(--mono); font-size:11px; letter-spacing:.03em;
+  color:var(--muted); text-decoration:none;
+  transition:color .18s var(--ease);
+}
+.tba svg{width:13px; height:13px; fill:currentColor; flex:none; opacity:.8}
+.tba:hover{color:var(--accent)}
+.tba:hover svg{opacity:1}
+@media (max-width:1200px){ .tb-role{display:none} }
+@media (max-width:1040px){
+  .tb-acts{gap:14px}
+  .tba span{display:none}
+  .tba svg{width:15px; height:15px}
+}
+@media (min-width:961px){ .topbar{display:flex} }
+
 /* ============================================================ main */
 main{padding:0 clamp(20px,4vw,64px) 36px; max-width:1180px}
 .pane{scroll-margin-top:calc(var(--stick, 0px) + 16px)}
@@ -161,6 +202,7 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 .tag.lang{color:var(--ink-2)}
 .tag.lang::before{content:"●  "; color:var(--accent)}
 .pcard[data-open]{cursor:pointer}
+.pcard{scroll-margin-top:calc(var(--stick,0px) + 16px)}
 .tag.wip{color:var(--accent); border-color:color-mix(in oklab,var(--accent) 40%,transparent)}
 .tag.lock::before{content:"🔒  "}
 
@@ -319,9 +361,11 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
   transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
 }
 .pcard:hover{transform:translateY(-4px); border-color:var(--accent); box-shadow:var(--shadow)}
-.pshot{position:relative; grid-column:2; grid-row:1; aspect-ratio:1100/688; background:var(--surface-2); border-left:1px solid var(--line); overflow:hidden}
-.pbody{grid-column:1; grid-row:1; min-height:0; max-height:calc(min(42cqw, 440px) * 688 / 1100); overflow:hidden}
-.pshot img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; display:block}
+.pshot{position:relative; grid-column:2; grid-row:1; aspect-ratio:16/9; background:var(--surface-2); border-left:1px solid var(--line); overflow:hidden}
+.pbody{grid-column:1; grid-row:1; min-height:0; max-height:calc(min(42cqw, 440px) * 9 / 16); overflow:hidden}
+/* Films are 16:9, so they fit whole; stills may not be, so they crop to fill. */
+.pshot img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block}
+.pshot video{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block}
 .pno{
   position:absolute; bottom:10px; right:10px; font-family:var(--mono); font-size:10px; letter-spacing:.1em;
   padding:3px 8px; border-radius:4px; background:var(--paper); color:var(--muted); border:1px solid var(--line);
@@ -426,7 +470,7 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
   .row .t{font-size:12.5px}
   .pgrid{gap:12px}
   .pcard{display:flex; flex-direction:column}
-  .pshot{grid-column:auto; grid-row:auto; width:auto; aspect-ratio:16/10; border-left:0; border-bottom:1px solid var(--line)}
+  .pshot{grid-column:auto; grid-row:auto; width:auto; aspect-ratio:16/9; border-left:0; border-bottom:1px solid var(--line)}
   .pno{top:10px; bottom:auto}
   .pbody{grid-column:auto; grid-row:auto; max-height:none; overflow:visible; padding:11px; gap:8px}
   .phead h3{font-size:16px}

@@ -1,5 +1,5 @@
 import {
-  profile, stats, tenets, platforms, projects,
+  profile, stats, platforms, projects,
   experience, strengths, speaking, writing, education, socials, icons,
 } from './data.js';
 import { qr } from './qr.js';
@@ -37,12 +37,16 @@ function actions(p, repo) {
   return `<div class="pacts">${live}${source}</div>`;
 }
 
-/* Project card: screenshot, copy, and a QR to the live URL. */
+/* Project card: screenshot, copy, and a QR to the live URL. A project with a
+   marketing film plays it muted in place of the still, on hover or in view. */
 function card(p, i) {
   const repo = `https://github.com/nvkudva/${p.name}`;
-  const shot = p.shot
-    ? `<img src="${p.shot}" alt="Screenshot of ${esc(p.title)}" loading="lazy" decoding="async" width="1100" height="688">`
+  const still = p.shot
+    ? `<img src="${p.shot}" alt="Screenshot of ${esc(p.title)}" loading="lazy" decoding="async" width="1100" height="619">`
     : `<div class="noshot"><span>${esc(p.title)}</span></div>`;
+  const shot = p.video
+    ? `<video src="${p.video}" poster="${p.shot || ''}" muted loop playsinline preload="none" aria-label="${esc(p.title)} demo"></video>`
+    : still;
 
   /* The card opens the running app; failing that, the public source. A
      closed-source project with no deployment has nowhere to go, so it stays
@@ -78,7 +82,14 @@ function card(p, i) {
 }
 
 const miniProject = (index) => `
-    <a class="mini" href="/projects" data-link data-target="plat-${index}">${esc(platforms[index].name.split(' — ')[0])}</a>`;
+    <a class="mini" href="/projects" data-link data-target="plat-${index}">${esc(platforms[index].name.split(': ')[0])}</a>`;
+
+/* A personal project, linked to its card on /building. */
+const shippedProject = (name) => {
+  const project = projects.find((p) => p.name === name);
+  return `
+    <a class="mini" href="/building#p-${esc(name)}" data-link>${esc(project ? project.title : name)}</a>`;
+};
 
 const socialRow = () => `
   <div class="links">
@@ -134,7 +145,7 @@ export const home = () => `
 export const projectsView = () => `
   <section>
     <div class="eyebrow">Platforms · shipped at scale</div>
-    <h1 style="font-size:clamp(28px,4vw,44px)">Things I built, not things I approved</h1>
+    <h1 style="font-size:clamp(28px,4vw,44px)">Projects &amp; Platforms built</h1>
     <div class="openlist">
       ${platforms.map((p, i) => `
         <article class="plat" id="plat-${i}">
@@ -149,34 +160,32 @@ export const projectsView = () => `
           </div>
         </article>`).join('')}
     </div>
-    <div class="cta">
-      <a class="btn" href="/building" data-link>What I'm building now →</a>
-    </div>
   </section>`;
 
 /* ------------------------------------------------------------------ */
+
+const inFlight = projects.filter((p) => p.current);
+const ordered = [...projects.filter((p) => !p.current), ...inFlight];
 
 export const buildingView = () => `
   <section>
     <div class="eyebrow">Personal projects · built since May 2025</div>
     <h1 style="font-size:clamp(28px,4vw,44px)">What I'm building now</h1>
-    <p class="sublede">Hands-on applied AI, shipped on evenings and weekends.</p>
   </section>
 
   <section>
     <div class="pgrid">
-      ${projects.map((p, i) => card(p, i)).join('')}
-    </div>
-    <div class="cta">
-      <a class="btn" href="https://github.com/nvkudva?tab=repositories" target="_blank" rel="noopener noreferrer">All repositories on GitHub ↗</a>
+      ${ordered.filter((p) => !p.current).map((p) => card(p, ordered.indexOf(p))).join('')}
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">How I run an engineering org in the AI era</div>
-    <div class="rows">
-      ${tenets.map((t, i) => `
-        <div class="row"><span class="y">0${i + 1}</span><span class="t"><b>${esc(t.t)}</b> — ${esc(t.d)}</span></div>`).join('')}
+    <div class="eyebrow">Currently building</div>
+    <div class="pgrid">
+      ${inFlight.map((p) => card(p, ordered.indexOf(p))).join('')}
+    </div>
+    <div class="cta">
+      <a class="btn" href="https://github.com/nvkudva?tab=repositories" target="_blank" rel="noopener noreferrer">All repositories on GitHub ↗</a>
     </div>
   </section>`;
 
@@ -199,6 +208,7 @@ export const resumeView = () => `
             ${e.roles ? `<div class="rng">${esc(r.years)}${r.where ? ` · ${esc(r.where)}` : ''}</div>` : ''}
             <ul>${r.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
             ${r.built ? `<div class="built"><span class="blabel">Projects</span>${r.built.map(miniProject).join('')}</div>` : ''}
+            ${r.builtProjects ? `<div class="built"><span class="blabel">Shipped</span>${r.builtProjects.map(shippedProject).join('')}</div>` : ''}
           </div>`).join('')}
         </div>
       </article>`).join('')}
@@ -224,7 +234,7 @@ export const resumeView = () => `
     <div class="eyebrow">Education</div>
     <div class="rows">
       ${education.map((e) => `
-        <div class="row"><span class="y">${esc(e.y.slice(0, 4))}</span><span class="t"><b style="color:var(--ink)">${esc(e.d)}</b> — ${esc(e.o)}</span></div>`).join('')}
+        <div class="row"><span class="y">${esc(e.y.slice(0, 4))}</span><span class="t"><b style="color:var(--ink)">${esc(e.d)}</b>: ${esc(e.o)}</span></div>`).join('')}
     </div>
   </section>`;
 
@@ -236,7 +246,7 @@ export const contactView = () => `
     <h1 style="font-size:clamp(28px,4vw,44px)">Let's talk</h1>
     <p class="lede">
       I'm open to senior engineering leadership roles driving AI-forward platform and product engineering at scale.
-      Fastest route is email — I reply within a day.
+      Fastest route is email, I reply within a day.
     </p>
     <div class="cta">
       <a class="btn primary" href="mailto:${profile.email}">${esc(profile.email)}</a>

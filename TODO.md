@@ -1,0 +1,1 @@
+- [ ] Revisit résumé "How I run an engineering org in the AI era" tenets: rewrite (intent, verification, harness, supervising agents, token budget), then re-add the section to resumeView() in views.js (tenets still in data.js)

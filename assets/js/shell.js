@@ -1,4 +1,6 @@
-import { profile } from './data.js';
+import { profile, icons } from './data.js';
+
+const svg = (k) => `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="${icons[k]}"/></svg>`;
 
 const NAV = [
   ['/', 'Overview'],
@@ -38,6 +40,25 @@ const console_ = () => `
       </div>
 
     </nav>
+
+    <header class="topbar">
+      <a class="tb-name" href="/" data-link>${profile.name}</a>
+      <span class="tb-role">${profile.role}</span>
+      <div class="tb-acts">
+        <a class="tba" href="tel:${profile.phones[0].replace(/\s/g, '')}" aria-label="Call ${profile.phones[0]}" title="Call">
+          ${svg('phone')}<span>${profile.phones[0]}</span>
+        </a>
+        <a class="tba" href="mailto:${profile.email}" aria-label="Email ${profile.email}" title="Email">
+          ${svg('mail')}<span>Email</span>
+        </a>
+        <a class="tba" href="https://www.linkedin.com/in/nvkudva/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+          ${svg('linkedin')}<span>LinkedIn</span>
+        </a>
+        <a class="tba" href="${profile.resume}" download aria-label="Download résumé" title="Download résumé">
+          ${svg('doc')}<span>Résumé</span>
+        </a>
+      </div>
+    </header>
 
     <main id="main"></main>
   </div>

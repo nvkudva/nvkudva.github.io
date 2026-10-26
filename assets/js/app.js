@@ -208,8 +208,35 @@ function go(path, push = true, targetId) {
   jump(path, push, targetId);
 }
 
+/* ---------------- summary popup ---------------- */
+let summaryTimer;
+function openSummary() {
+  const dialog = document.querySelector('[data-summary-dialog]');
+  if (!dialog || dialog.open) return;
+  const loading = dialog.querySelector('[data-summary-loading]');
+  const body = dialog.querySelector('[data-summary-body]');
+  loading.hidden = false;
+  body.hidden = true;
+  dialog.showModal();
+  clearTimeout(summaryTimer);
+  summaryTimer = setTimeout(() => { loading.hidden = true; body.hidden = false; }, 2000);
+}
+function closeSummary() {
+  const dialog = document.querySelector('[data-summary-dialog]');
+  clearTimeout(summaryTimer);
+  if (dialog?.open) dialog.close();
+}
+document.addEventListener('close', (e) => {
+  if (e.target.matches?.('[data-summary-dialog]') && !e.target.open) clearTimeout(summaryTimer);
+}, true);
+
 /* ---------------- interaction ---------------- */
 document.addEventListener('click', (e) => {
+  if (e.target.closest('[data-summary-open]')) { openSummary(); return; }
+  if (e.target.closest('[data-summary-close]')) { closeSummary(); return; }
+  const dialog = e.target.closest('[data-summary-dialog]');
+  if (dialog && e.target === dialog) closeSummary();
+
   const subt = e.target.closest('[data-sub]');
   if (subt) {
     const open = subt.getAttribute('aria-expanded') === 'true';

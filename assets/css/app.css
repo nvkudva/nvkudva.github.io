@@ -59,14 +59,8 @@ button{font:inherit}
   display:flex; flex-direction:column; gap:16px;
   transition:background .45s var(--ease), border-color .45s var(--ease);
 }
-.brand{display:flex; align-items:center; gap:11px; font-size:15.5px; font-weight:600; letter-spacing:-.01em; line-height:1.25}
-.brand small{display:block; font-family:var(--mono); font-size:10.5px; font-weight:400; letter-spacing:.03em; color:var(--muted)}
 
-/* one-tap contact, on every page */
-.hail{display:flex; flex-direction:column; gap:3px; font-family:var(--mono); font-size:11px; line-height:1.6}
-.hail a{color:var(--muted); border-bottom:1px solid transparent; align-self:flex-start; transition:color .22s var(--ease), border-color .22s var(--ease)}
-.hail a:hover{color:var(--accent); border-bottom-color:var(--accent)}
-
+.rail-id{display:none}
 .nav{display:flex; flex-direction:column; gap:2px}
 .nav a{
   display:block; padding:9px 12px; border-radius:6px; color:var(--ink-2);
@@ -80,6 +74,7 @@ button{font:inherit}
 .nav a:hover{background:var(--surface-2); color:var(--ink)}
 .nav a[aria-current]{background:var(--accent-soft); color:var(--ink); font-weight:600}
 .nav a[aria-current]::before{height:17px}
+@media (min-width:961px){ .nav a{font-size:20px; padding:12px 16px} .nav a[aria-current]::before{height:24px} }
 .ctl{display:flex; flex-direction:column; gap:6px; margin-top:auto}
 
 /* The hero, reduced to its essentials: on a desktop the rail already holds the
@@ -239,6 +234,14 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 #strengths .chips{gap:6px; margin-top:6px}
 #strengths .chips + h3{margin-top:12px}
 #strengths .chip{font-size:10.5px; padding:3px 9px}
+@media (min-width:961px){
+  .duo{grid-template-columns:1fr; gap:4px}
+  .duo .stats{grid-auto-flow:column; grid-template-columns:none}
+  .stat{padding:10px 14px}
+  .stat b{font-size:24px}
+  .sbox{display:grid; grid-template-columns:max-content 1fr; align-items:center; gap:8px 18px; padding:10px 14px}
+  #strengths .chips, #strengths .chips + h3{margin-top:0}
+}
 
 .rows{border-top:1px solid var(--line)}
 .row{display:grid; grid-template-columns:64px minmax(0,1fr) auto; gap:14px; align-items:baseline; padding:11px 8px; border-bottom:1px solid var(--line); transition:background .26s var(--ease), padding-left .26s var(--ease)}
@@ -310,9 +313,10 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
   .footwrap{margin-left:0}
   .shell{grid-template-columns:1fr}
   .rail{position:sticky; top:0; z-index:20; height:auto; flex-direction:row; align-items:center; flex-wrap:wrap; gap:12px 16px; border-right:0; border-bottom:1px solid var(--line); padding:14px 18px}
+  .rail-id{display:flex; align-items:center; gap:14px; order:1; flex:1; min-width:0}
+  .ctl{order:2}
   .nav{flex-direction:row; flex-wrap:wrap; gap:2px; order:3; width:100%}
   .nav a{padding:7px 11px; font-size:13.5px}
-  .hail{flex-direction:row; flex-wrap:wrap; gap:4px 14px; order:4; width:100%; font-size:10.5px}
   .ctl{flex-direction:row; align-items:center; gap:8px; margin-top:0; margin-left:auto; width:auto}
   .ctl .tsw{align-self:center}
   .hero{grid-template-columns:1fr; gap:28px; padding-top:20px}
@@ -340,13 +344,11 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
   .sublede{margin-top:8px}
   .stat span{font-size:9px}
   .pqr{width:70px; height:70px}
-  .hail{font-size:10px; gap:3px 12px}
   .nav{gap:0; justify-content:space-between; flex-wrap:nowrap}
-}  .nav a{padding:6px 5px; font-size:11.5px; white-space:nowrap}
+  .nav a{padding:6px 5px; font-size:11.5px; white-space:nowrap}
   .ctl{gap:6px}
   .tsw{width:24px; height:24px}
   .tsw svg{width:13px; height:13px}
-
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}

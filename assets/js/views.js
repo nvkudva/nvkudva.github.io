@@ -1,5 +1,5 @@
 import {
-  profile, stats, platforms, projects,
+  profile, platforms, projects,
   experience, strengths, speaking, writing, education, socials, icons,
 } from './data.js';
 import { qr } from './qr.js';
@@ -123,13 +123,6 @@ export const home = () => `
   </section>
 
   <div class="duo">
-    <section>
-      <div class="eyebrow">By the numbers</div>
-      <div class="stats">
-        ${stats.map((s) => `<div class="stat"><b>${esc(s.v)}</b><span>${esc(s.k)}</span></div>`).join('')}
-      </div>
-    </section>
-
     <section id="strengths">
       <div class="eyebrow">Core strengths</div>
       <div class="sbox">
@@ -170,7 +163,10 @@ const ordered = [...projects.filter((p) => !p.current), ...inFlight];
 export const buildingView = () => `
   <section>
     <div class="eyebrow">Personal projects · built since May 2025</div>
-    <h1 style="font-size:clamp(28px,4vw,44px)">What I'm building now</h1>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <h1 style="font-size:clamp(28px,4vw,44px)">What I'm building now</h1>
+      <a class="btn" href="https://github.com/nvkudva?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </div>
   </section>
 
   <section>
@@ -187,13 +183,28 @@ export const buildingView = () => `
     <div class="cta">
       <a class="btn" href="https://github.com/nvkudva?tab=repositories" target="_blank" rel="noopener noreferrer">All repositories on GitHub ↗</a>
     </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Speaking &amp; recognition</div>
+    <div class="rows">
+      ${speaking.map((s) => `
+        <div class="row"><span class="y">${esc(s.y)}</span><span class="t">${esc(s.t)}</span><span class="badge">${esc(s.tag)}</span></div>`).join('')}
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Writing · medium.com/@nvkudva</div>
+    <div class="rows">
+      ${writing.map((w) => `
+        <a class="row" href="${w.u}" target="_blank" rel="noopener noreferrer"><span class="y">${esc(w.d.split(' ')[1])}</span><span class="t">${esc(w.t)}</span><span class="badge">Read ↗</span></a>`).join('')}
+    </div>
   </section>`;
 
 /* ------------------------------------------------------------------ */
 
 export const resumeView = () => `
   <section class="resumetop">
-    <div class="eyebrow">Résumé</div>
     <h1 style="font-size:clamp(28px,4vw,44px)">Experience</h1>
   </section>
 
@@ -212,22 +223,6 @@ export const resumeView = () => `
           </div>`).join('')}
         </div>
       </article>`).join('')}
-  </section>
-
-  <section>
-    <div class="eyebrow">Speaking &amp; recognition</div>
-    <div class="rows">
-      ${speaking.map((s) => `
-        <div class="row"><span class="y">${esc(s.y)}</span><span class="t">${esc(s.t)}</span><span class="badge">${esc(s.tag)}</span></div>`).join('')}
-    </div>
-  </section>
-
-  <section>
-    <div class="eyebrow">Writing · medium.com/@nvkudva</div>
-    <div class="rows">
-      ${writing.map((w) => `
-        <a class="row" href="${w.u}" target="_blank" rel="noopener noreferrer"><span class="y">${esc(w.d.split(' ')[1])}</span><span class="t">${esc(w.t)}</span><span class="badge">Read ↗</span></a>`).join('')}
-    </div>
   </section>
 
   <section>

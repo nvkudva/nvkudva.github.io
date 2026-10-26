@@ -359,7 +359,7 @@ export const experience = [
 ];
 
 export const strengths = {
-  Leadership: ['Org design & scaling', 'Platform strategy & architecture', 'GenAI adoption', 'Cross-geo execution', 'Leadership development', 'Operational excellence'],
+  Leadership: ['Org design & scaling', 'Platform strategy & architecture', 'GenAI adoption', 'Cross-geo execution', 'Operational excellence'],
   'Applied AI': ['AI agents', 'Multi-agent orchestration','Local LLMs', 'On-device inference', 'WebAssembly inference', 'Coding agents', 'Voice interfaces'],
   Technical: ['TypeScript', 'JavaScript', 'React', 'Node.js', 'Python', 'GraphQL', 'Webpack', 'Web architecture', 'PWA', 'RPC', 'Microservices', 'Java'],
 };

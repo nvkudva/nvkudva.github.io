@@ -3,6 +3,7 @@ import {
   experience, strengths, speaking, writing, education, socials, icons,
 } from './data.js';
 import { qr } from './qr.js';
+import { acts } from './shell.js';
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const svg = (k) => `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="${icons[k]}"/></svg>`;
@@ -110,15 +111,12 @@ export const home = () => `
         <span><b>●</b> ${esc(profile.status)}</span><span class="sep">·</span>
         <span>${esc(profile.pedigree)}</span>
       </div>
-      <h1 class="rise" style="animation-delay:.05s">${esc(profile.name)}</h1>
+      <div class="herohead rise" style="animation-delay:.05s">
+        <h1>${esc(profile.name)}</h1>
+        ${acts()}
+      </div>
       <p class="lede rise" style="animation-delay:.1s">${profile.lede[0]}</p>
       <p class="bio rise" style="animation-delay:.14s">${esc(profile.personal)}</p>
-      <div class="cta rise" style="animation-delay:.18s">
-        <a class="btn primary" href="${profile.resume}" download>Download résumé ↓</a>
-        <a class="btn" href="https://github.com/nvkudva" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="btn" href="mailto:${profile.email}">Email</a>
-        <a class="btn" href="https://www.linkedin.com/in/nvkudva/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
     </div>
   </section>
 

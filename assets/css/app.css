@@ -139,6 +139,11 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 
 /* ---- hero ---- */
 .hero{display:grid; grid-template-columns:minmax(0,1fr); gap:36px; align-items:start}
+.herohead{display:flex; align-items:center; gap:10px 22px; flex-wrap:wrap}
+.herohead h1{flex:1 1 auto; min-width:min(100%, 12ch)}
+.herohead .tb-acts{align-self:center}
+.herohead .tba{font-size:14px; gap:8px}
+.herohead .tba svg{width:16px; height:16px}
 .statusline{font-family:var(--mono); font-size:12px; color:var(--muted); display:flex; flex-wrap:wrap; gap:8px 16px; margin-bottom:16px}
 .statusline b{color:var(--pos); font-weight:500}
 .lede{font-size:18.5px; line-height:1.58; color:var(--ink-2); max-width:58ch; margin-top:12px}
@@ -229,7 +234,7 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 .duo > section{display:flex; flex-direction:column}
 .duo .stats, .sbox{flex:1}
 .duo .stats{grid-auto-flow:row; grid-template-columns:1fr 1fr}
-.sbox{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:12px 14px}
+.sbox{border:1px solid var(--line); border-radius:6px; padding:12px 14px}
 #strengths h3{font-size:13.5px; margin:0}
 #strengths .chips{gap:6px; margin-top:6px}
 #strengths .chips + h3{margin-top:12px}

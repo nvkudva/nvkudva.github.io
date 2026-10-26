@@ -16,7 +16,8 @@ const foot = () => `
   </footer>`;
 
 /* ---------------------------------------------------------- console */
-const acts = () => `
+/* Shared with the hero: the same contact actions, next to the name there too. */
+export const acts = () => `
       <div class="tb-acts">
         <a class="tba" href="tel:${profile.phones[0].replace(/\s/g, '')}" aria-label="Call ${profile.phones[0]}" title="Call">
           ${svg('phone')}<span>${profile.phones[0]}</span>

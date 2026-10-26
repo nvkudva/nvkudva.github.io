@@ -60,7 +60,7 @@ export const platforms = [
     ],
   },
   {
-    name: 'Uber’s first GenAI support bot',
+    name: "Uber's First Gen AI Bot",
     org: 'Uber',
     years: '2024 – 2025',
     body: 'Led the experimental integration of Uber’s first GenAI-powered support bot for business customers, on the customer-care infrastructure.',

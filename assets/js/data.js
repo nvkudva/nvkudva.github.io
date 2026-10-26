@@ -5,7 +5,7 @@ export const profile = {
   role: 'Engineering Leader: Platforms & Global Teams',
   pedigree: 'Ex Uber · Myntra · Intuit',
   location: 'Bangalore, India',
-  status: 'Open to Senior Engineering Leadership roles',
+  status: 'Open to Senior Engineering Leadership roles, globally',
   email: 'nvkudva@gmail.com',
   phones: ['+91 96325 44966', '+1 650 772 1555'],
   resume: '/public/resume/Vijay-Krishna-Kudva-Resume.pdf',
@@ -60,7 +60,7 @@ export const platforms = [
     ],
   },
   {
-    name: 'Uber’s first GenAI support bot',
+    name: "Uber's First Gen AI Bot",
     org: 'Uber',
     years: '2024 – 2025',
     body: 'Led the experimental integration of Uber’s first GenAI-powered support bot for business customers, on the customer-care infrastructure.',

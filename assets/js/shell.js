@@ -6,10 +6,9 @@ const NAV = [
   ['/', 'Overview'],
   ['/resume', 'Experience'],
   ['/projects', 'Projects'],
-  ['/building', 'Building'],
+  ['/building', 'AI projects'],
   ['/contact', 'Contact'],
 ];
-
 const foot = () => `
   <footer class="sitefoot">
     <span>© ${new Date().getFullYear()} ${profile.name}</span>

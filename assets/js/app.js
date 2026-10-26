@@ -26,7 +26,7 @@ const pathFor = (id) => (ROUTES.find(([, i]) => i === id) || ROUTES[0])[0];
 const TITLES = {
   '/': 'Vijay Krishna Kudva | Engineering Leader',
   '/projects': 'Projects | Vijay Krishna Kudva',
-  '/building': 'Building | Vijay Krishna Kudva',
+  '/building': 'AI projects | Vijay Krishna Kudva',
   '/resume': 'Experience | Vijay Krishna Kudva',
   '/contact': 'Contact | Vijay Krishna Kudva',
 };
@@ -44,7 +44,7 @@ function stamp() {
 
 /* ---------------- render ---------------- */
 function markNav(path) {
-  document.querySelectorAll('[data-nav] a').forEach((a) => {
+  document.querySelectorAll('[data-nav] a[data-link]').forEach((a) => {
     if (new URL(a.href).pathname === path) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
   });
@@ -210,6 +210,15 @@ function go(path, push = true, targetId) {
 
 /* ---------------- interaction ---------------- */
 document.addEventListener('click', (e) => {
+  const subt = e.target.closest('[data-sub]');
+  if (subt) {
+    const open = subt.getAttribute('aria-expanded') === 'true';
+    subt.setAttribute('aria-expanded', String(!open));
+    const list = document.getElementById(subt.getAttribute('aria-controls'));
+    if (list) list.hidden = open;
+    return;
+  }
+
   const act = e.target.closest('[data-act]');
   if (act) {
     const [kind, val] = act.dataset.act.split(':');

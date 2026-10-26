@@ -106,7 +106,7 @@ const socialRow = () => `
 export const home = () => `
   <section class="hero">
     <div>
-      <div class="statusline rise">
+      <div class="statusline rise" style="animation-delay:.06s">
         <span>${esc(profile.location)}</span><span class="sep">·</span>
         <span><b>●</b> ${esc(profile.status)}</span><span class="sep">·</span>
         <span>${esc(profile.pedigree)}</span>
@@ -183,7 +183,7 @@ export const buildingView = () => `
     </div>
   </section>
 
-  <section>
+  <section id="speaking">
     <div class="eyebrow">Speaking &amp; recognition</div>
     <div class="rows">
       ${speaking.map((s) => `
@@ -191,7 +191,7 @@ export const buildingView = () => `
     </div>
   </section>
 
-  <section>
+  <section id="writing">
     <div class="eyebrow">Writing · medium.com/@nvkudva</div>
     <div class="rows">
       ${writing.map((w) => `
@@ -223,7 +223,7 @@ export const resumeView = () => `
       </article>`).join('')}
   </section>
 
-  <section>
+  <section id="education">
     <div class="eyebrow">Education</div>
     <div class="rows">
       ${education.map((e) => `
@@ -238,7 +238,7 @@ export const contactView = () => `
     <div class="eyebrow">Contact</div>
     <h1 style="font-size:clamp(28px,4vw,44px)">Let's talk</h1>
     <p class="lede">
-      I'm open to senior engineering leadership roles driving AI-forward platform and product engineering at scale.
+      I'm open to senior engineering leadership roles anywhere in the world, driving AI-forward platform and product engineering at scale.
       Fastest route is email, I reply within a day.
     </p>
     <div class="cta">

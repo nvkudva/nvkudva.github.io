@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-layout="console" data-skin="pro" data-mode="light">
+<html lang="en" data-layout="console" data-skin="pro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -22,7 +22,7 @@
     var r = document.documentElement;
     r.dataset.layout = s.layout === 'kinetic' ? 'kinetic' : 'console';
     r.dataset.skin = s.skin === 'cyber' ? 'cyber' : 'pro';
-    r.dataset.mode = s.mode === 'dark' ? 'dark' : 'light';
+    if (s.mode) r.dataset.mode = s.mode;
   } catch (e) {}
 </script>
 

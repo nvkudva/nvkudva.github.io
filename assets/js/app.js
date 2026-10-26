@@ -8,8 +8,9 @@ if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 const root = document.documentElement;
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
+const systemDark = matchMedia('(prefers-color-scheme:dark)');
 const state = {
-  mode: root.dataset.mode === 'dark' ? 'dark' : 'light',
+  mode: root.dataset.mode || (systemDark.matches ? 'dark' : 'light'),
 };
 
 /* path <-> pane id. The site is one document; a route is a scroll position. */
@@ -35,10 +36,14 @@ const TITLES = {
 function save() {
   try { localStorage.setItem('vk.theme', JSON.stringify(state)); } catch { /* private mode */ }
 }
-function stamp() {
-  root.dataset.mode = state.mode;
+function syncThemeColor() {
   themeMeta.content = getComputedStyle(root)
     .getPropertyValue('--paper').trim();
+}
+/* Until the visitor toggles, no mode is stamped and the system preference rules. */
+function stamp() {
+  root.dataset.mode = state.mode;
+  syncThemeColor();
   save();
 }
 
@@ -208,8 +213,35 @@ function go(path, push = true, targetId) {
   jump(path, push, targetId);
 }
 
+/* ---------------- summary popup ---------------- */
+let summaryTimer;
+function openSummary() {
+  const dialog = document.querySelector('[data-summary-dialog]');
+  if (!dialog || dialog.open) return;
+  const loading = dialog.querySelector('[data-summary-loading]');
+  const body = dialog.querySelector('[data-summary-body]');
+  loading.hidden = false;
+  body.hidden = true;
+  dialog.showModal();
+  clearTimeout(summaryTimer);
+  summaryTimer = setTimeout(() => { loading.hidden = true; body.hidden = false; }, 2000);
+}
+function closeSummary() {
+  const dialog = document.querySelector('[data-summary-dialog]');
+  clearTimeout(summaryTimer);
+  if (dialog?.open) dialog.close();
+}
+document.addEventListener('close', (e) => {
+  if (e.target.matches?.('[data-summary-dialog]') && !e.target.open) clearTimeout(summaryTimer);
+}, true);
+
 /* ---------------- interaction ---------------- */
 document.addEventListener('click', (e) => {
+  if (e.target.closest('[data-summary-open]')) { openSummary(); return; }
+  if (e.target.closest('[data-summary-close]')) { closeSummary(); return; }
+  const dialog = e.target.closest('[data-summary-dialog]');
+  if (dialog && e.target === dialog) closeSummary();
+
   const subt = e.target.closest('[data-sub]');
   if (subt) {
     const open = subt.getAttribute('aria-expanded') === 'true';
@@ -246,7 +278,14 @@ document.addEventListener('click', (e) => {
 addEventListener('popstate', () => go(location.pathname, false));
 addEventListener('resize', stick);
 
-stamp();
+systemDark.addEventListener('change', (e) => {
+  if (root.dataset.mode) return;
+  state.mode = e.matches ? 'dark' : 'light';
+  syncThemeColor();
+  syncShell();
+});
+
+syncThemeColor();
 remount();
 watchTopbar();
 

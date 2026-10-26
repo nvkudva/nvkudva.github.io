@@ -148,7 +148,7 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 .herohead .tba svg{width:16px; height:16px}
 .statusline{font-family:var(--mono); font-size:12px; color:var(--muted); display:flex; flex-wrap:wrap; gap:8px 16px; margin-bottom:16px}
 .statusline b{color:var(--pos); font-weight:500}
-.pedigree{font-family:var(--mono); font-size:12px; color:var(--muted); margin-top:14px}
+.pedigree{font-family:var(--mono); font-size:12px; font-weight:600; color:var(--ink-2); margin-top:14px}
 .lede{font-size:18.5px; line-height:1.58; color:var(--ink-2); max-width:58ch; margin-top:12px}
 .lede em{color:var(--ink); font-style:normal; font-weight:600}
 /* The one human line, right above the calls to action. */
@@ -241,7 +241,7 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 #strengths h3{font-size:13.5px; margin:0}
 #strengths .chips{gap:6px; margin-top:6px}
 #strengths .chips + h3{margin-top:12px}
-#strengths .chip{font-size:10.5px; padding:3px 9px}
+#strengths .chip{font-size:9.5px; padding:3px 9px}
 @media (min-width:961px){
   .duo{grid-template-columns:1fr; gap:4px}
   .duo .stats{grid-auto-flow:column; grid-template-columns:none}
@@ -302,6 +302,88 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 .toast .toast-go:hover{filter:brightness(1.15)}
 .toast .toast-x{padding:7px 10px; color:var(--muted)}
 .toast .toast-x:hover{border-color:var(--accent); color:var(--ink)}
+
+/* ---- summarize: floating action + popup ---- */
+.summarize-fab{
+  position:fixed; right:22px; bottom:22px; z-index:60;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:11px 18px; border-radius:999px; cursor:pointer;
+  background:var(--ink); color:var(--paper); border:1px solid var(--ink);
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.04em;
+  box-shadow:0 10px 28px -10px rgba(18,21,27,.45);
+  transition:transform .22s var(--ease), box-shadow .22s var(--ease), background .22s var(--ease);
+}
+.summarize-fab svg{width:14px; height:14px; fill:currentColor; flex:none}
+.summarize-fab:hover{transform:translateY(-2px); background:var(--accent); border-color:var(--accent); color:var(--on-accent)}
+.summary-dialog{
+  width:min(680px, calc(100vw - 32px)); max-height:min(82vh, 860px);
+  padding:0; border:1px solid var(--line); border-radius:14px;
+  background:var(--surface); color:var(--ink); box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.summary-dialog::backdrop{background:rgba(10,12,16,.52); backdrop-filter:blur(3px)}
+.summary-dialog[open]{animation:summary-in .3s var(--ease) both}
+@keyframes summary-in{from{opacity:0; transform:translateY(14px) scale(.985)} to{opacity:1; transform:none}}
+.summary-head{
+  position:sticky; top:0; z-index:1;
+  display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+  padding:20px 22px 16px; background:var(--surface); border-bottom:1px solid var(--line);
+}
+.summary-head h2{font-size:18px; margin:2px 0 2px}
+.summary-sub{font-family:var(--mono); font-size:11px; letter-spacing:.03em; color:var(--muted); margin:0}
+.summary-eyebrow{font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent)}
+.summary-close{
+  width:34px; height:34px; flex:none; display:grid; place-items:center; cursor:pointer;
+  border:1px solid var(--line); border-radius:999px; background:var(--paper); color:var(--muted);
+  transition:border-color .2s, color .2s, transform .2s var(--ease);
+}
+.summary-close svg{width:13px; height:13px}
+.summary-close:hover{border-color:var(--accent); color:var(--ink); transform:rotate(90deg)}
+.summary-loading{padding:52px 22px 56px; text-align:center}
+.summary-spinner{
+  width:38px; height:38px; margin:0 auto 16px; border-radius:50%;
+  border:3px solid var(--accent-soft); border-top-color:var(--accent);
+  animation:summary-spin .8s linear infinite;
+}
+@keyframes summary-spin{to{transform:rotate(360deg)}}
+.summary-loading-title{font-size:14.5px; font-weight:600; color:var(--ink); margin:0 0 4px}
+.summary-loading-sub{font-family:var(--mono); font-size:11px; color:var(--muted); margin:0}
+.summary-skeleton{display:grid; gap:10px; max-width:420px; margin:26px auto 0}
+.summary-skeleton span{height:10px; border-radius:5px; background:var(--surface-2); animation:summary-pulse 1.1s var(--ease) infinite alternate}
+.summary-skeleton span:nth-child(2){width:82%}
+.summary-skeleton span:nth-child(3){width:64%}
+@keyframes summary-pulse{from{opacity:.45} to{opacity:1}}
+.summary-body{padding:20px 22px 24px; overflow-y:auto; max-height:calc(min(82vh, 860px) - 97px)}
+.summary-lede{font-size:14.5px; line-height:1.6; color:var(--ink-2); margin:0}
+.summary-lede strong, .summary-body strong{color:var(--ink)}
+.summary-stats{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:18px 0 4px;
+  background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden;
+}
+.summary-stats div{background:var(--paper); padding:12px}
+.summary-stats b{display:block; font-size:18px; font-weight:600; letter-spacing:-.02em; line-height:1.15}
+.summary-stats span{font-family:var(--mono); font-size:9.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); line-height:1.4; display:block; margin-top:4px}
+.summary-section{padding:16px 0 0}
+.summary-section h3{font-size:16px; margin:0 0 9px; padding-bottom:8px; border-bottom:1px solid var(--line)}
+.summary-section ul{margin:0; padding-left:17px; color:var(--ink-2)}
+.summary-section li{font-size:14.5px; line-height:1.6; margin-bottom:8px}
+.summary-section li::marker{color:var(--accent)}
+.summary-entry{padding:10px 0 2px}
+.summary-entry + .summary-entry{border-top:1px dashed var(--line); margin-top:8px}
+.summary-org{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:5px}
+.summary-entry p{font-size:14.5px; line-height:1.6; margin:0}
+.summary-rec{margin-top:20px; padding:16px; border-radius:8px; background:var(--accent-soft)}
+.summary-rec p{font-size:14.5px; line-height:1.6; color:var(--ink-2); margin:5px 0 0}
+@media (max-width:620px){
+  .summarize-fab{right:16px; bottom:16px; padding:10px 15px; font-size:11.5px}
+  .summary-stats{grid-template-columns:1fr 1fr}
+  .summary-head{padding:16px 16px 13px}
+  .summary-head h2{font-size:16px}
+  .summary-body{padding:16px}
+  .summary-lede, .summary-section li, .summary-entry p, .summary-rec p{font-size:11.5px}
+  .summary-section h3{font-size:14px}
+  .summary-stats b{font-size:16px}
+}
 
 /* ============================================================ motion */
 @view-transition{ navigation:auto }

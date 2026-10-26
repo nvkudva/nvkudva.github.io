@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-mode="light">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -20,7 +20,7 @@
   try {
     var s = JSON.parse(localStorage.getItem('vk.theme') || '{}');
     var r = document.documentElement;
-    r.dataset.mode = s.mode === 'dark' ? 'dark' : 'light';
+    if (s.mode) r.dataset.mode = s.mode;
   } catch (e) {}
 </script>
 

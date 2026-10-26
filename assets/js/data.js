@@ -12,11 +12,11 @@ export const profile = {
   resumeMeta: { size: '98 KB', updated: 'Updated 2026' },
 
   lede: [
-    'Engineering leader with <em>17+ years in technology</em> and 6+ years building and scaling engineering organizations.',
+    'Engineering leader with <em>17+ years in technology</em> and <em>6+ years building and scaling engineering organizations</em>.',
   ],
 
   personal:
-    'Millennial. Bangalore for 17 years, the US for 3. Passionate techie, gadget hoarder, outdoor adventurer, dad — and a future health freak (currently nowhere near it).',
+    'Millennial. Bangalore for 17 years, the US for 3. Passionate techie, gadget hoarder, outdoor adventurer, dad.',
 };
 
 export const stats = [
@@ -52,7 +52,7 @@ export const platforms = [
     name: 'CO Console — Onboarding & Configuration Platform',
     org: 'Uber',
     years: '2018 – 2025',
-    body: 'Owned the strategic roadmap for Uber’s business onboarding platform inside the Customer Obsession org. Orchestrated integrations across 12+ business lines and partners — including autonomous mobility partners Motional, WeRide and Waymo.',
+    body: 'Owned the strategic roadmap for Uber’s business onboarding platform inside the Customer Obsession org. Orchestrated integrations across 12+ business lines and 8+ third-party partners — Instacart, NYTaxi and Yellow Cabs, and autonomous mobility partners Motional, WeRide and Waymo.',
     metrics: [
       ['90%', 'less onboarding time'],
       ['50%', 'faster project delivery'],
@@ -70,10 +70,20 @@ export const platforms = [
     name: 'Global UI Platform Modernization',
     org: 'Uber',
     years: '2020 – 2023',
-    body: 'Led 16+ engineers through the modernization of Uber’s complete Customer Care UI platform, and built the GraphQL + RPC middleware layer connecting UI to most of Uber’s service layers.',
+    body: 'Led 16+ engineers through the modernization of Uber’s complete Customer Care UI platform. Cut the widget migration process from 15 steps and 23 statuses to 7.',
     metrics: [
       ['4wk → 5d', 'widget development'],
       ['80%+', 'reduction in build time'],
+    ],
+  },
+  {
+    name: 'Hydration Gateway — one GraphQL + RPC middleware layer',
+    org: 'Uber',
+    years: '2020 – 2023',
+    body: 'Built a single GraphQL + RPC middleware layer that connects the Customer Care UI to most of Uber’s service layers. It was designed for backend hydration and then enabled frontend hydration on the same platform, instead of solving the same need twice.',
+    metrics: [
+      ['GraphQL + RPC', 'UI and backend hydration'],
+      ['Most', 'of Uber’s service layers'],
     ],
   },
   {
@@ -90,7 +100,7 @@ export const platforms = [
     name: 'Myntra PWA',
     org: 'Myntra',
     years: '2016 – 2018',
-    body: 'Architected Myntra’s Progressive Web App from scratch — an instant-loading, app-like mobile web experience built for 3G India, without compromising load time or SEO.',
+    body: 'Architected Myntra’s Progressive Web App from scratch — an instant-loading, app-like mobile web experience built for 3G India, served from 6 Node servers behind Akamai to 14M monthly users.',
     metrics: [
       ['37%', 'conversion lift'],
       ['100k → 14M', 'monthly users'],
@@ -98,10 +108,21 @@ export const platforms = [
     ],
   },
   {
+    name: 'Myntra AMP',
+    org: 'Myntra',
+    years: '2017',
+    body: 'Rebuilt Myntra’s entire site on Google AMP in seven days, single-handedly for the first MVP — one of the first sites to ship amp-bind, with 100,000+ pages indexed and interactive product pages few AMP sites had. Showcased on stage at Google I/O 2017, and I sat on a Google DevFest panel on the project.',
+    metrics: [
+      ['7d', 'to rebuild on AMP'],
+      ['12%', 'revenue increase'],
+      ['100k+', 'pages indexed'],
+    ],
+  },
+  {
     name: 'Unity — Myntra’s enterprise UI framework',
     org: 'Myntra',
     years: '2014 – 2018',
-    body: 'A from-scratch React framework: template architecture, smart component library, thematic engine, and a configuration-driven UI model that let teams launch apps in hours instead of months.',
+    body: 'A from-scratch React framework: template architecture, smart component library, thematic engine, and a configuration-driven UI model that let teams launch apps in hours instead of months. When Myntra acquired Jabong, the framework absorbed their apps without rework.',
     metrics: [
       ['50+', 'internal apps powered'],
       ['8wk → 7d', 'app delivery cycle'],
@@ -239,42 +260,75 @@ export const projects = [
 
 export const experience = [
   {
-    org: 'AI & Tech Enthusiast', title: 'Planned break — going deep on applied AI',
+    org: 'AI & Tech Enthusiast',
     years: 'May 2025 – Present', where: 'India',
+    title: 'Planned break — going deep on applied AI',
     points: [
       'Hands-on with modern AI engineering — LLM integration, multi-agent systems, AI-assisted development.',
       'Building the AI-forward engineering workflows every org will need to adopt.',
     ],
   },
   {
-    org: 'Uber', title: 'Engineering Manager II', years: 'Dec 2018 – May 2025', where: 'California, USA',
-    points: [
-      'Scaled the org from 3 to 24+ engineers across the US, India and Brazil; onboarded 2 engineering managers and their 14-engineer teams into one cross-geo pod structure.',
-      'Spearheaded the CO Console onboarding and configuration platform, cutting new-business onboarding time by up to 90%.',
-      'Drove the Salesforce → CO migration, an 84% licensing reduction saving millions from 2024 onward.',
-      'Led conversational channel platform work across Chat, WhatsApp and Email.',
+    org: 'Uber',
+    years: 'Dec 2018 – May 2025', where: 'USA & India',
+    roles: [
+      {
+        title: 'Engineering Manager II', years: 'Dec 2018 – May 2025', where: 'California, USA',
+        built: [0, 1],
+        points: [
+          'Scaled the org from 3 to 24+ engineers across the US, India and Brazil; onboarded 2 engineering managers and their 14-engineer teams into one cross-geo pod structure.',
+          'Owned the strategic roadmap for Uber’s business onboarding platform inside the Customer Obsession org, and spearheaded the CO Console onboarding and configuration platform — onboarding time down by up to 90%.',
+          'Orchestrated integrations across 12+ business lines and 8+ third-party partners — Instacart, NYTaxi and Yellow Cabs, and autonomous mobility partners Motional, WeRide and Waymo.',
+          'Drove the Salesforce → CO migration, an 84% licensing reduction saving millions from 2024 onward.',
+          'Led conversational channel platform work across Chat, WhatsApp and Email.',
+        ],
+      },
+      {
+        title: 'Engineering Manager I', years: '2018 – 2021', where: 'Bangalore, India',
+        built: [2, 3],
+        points: [
+          'Led 16+ engineers on the Customer Care UI platform modernization across multiple apps.',
+          'Cultivated a cross-org UI community with discussion forums and feedback loops across Uber India.',
+        ],
+      },
+      {
+        title: 'Senior Software Engineer', years: '2018 – 2021', where: 'Bangalore, India',
+        built: [4],
+        points: [
+          'Built BlissNxt serving 30,000+ global agents — 3× faster loads, 40% faster ticket resolution.',
+        ],
+      },
     ],
   },
   {
-    org: 'Uber', title: 'Engineering Manager I · Senior Software Engineer', years: '2018 – 2021', where: 'Bangalore, India',
-    points: [
-      'Led 16+ engineers on the Customer Care UI platform modernization across multiple apps.',
-      'Built BlissNxt serving 30,000+ global agents — 3× faster loads, 40% faster ticket resolution.',
-      'Cultivated a cross-org UI community with discussion forums and feedback loops across Uber India.',
+    org: 'Myntra',
+    years: 'Jan 2014 – Dec 2018', where: 'Bangalore, India',
+    roles: [
+      {
+        title: 'Frontend Architect', years: '2016 – Dec 2018',
+        built: [5, 6],
+        points: [
+          'Architected Myntra’s PWA — 37% conversion lift, 100K to 14M monthly users, 3× faster loads, 71% smaller JS bundles. Served from 6 Node servers behind Akamai: 3.1s versus 9.4s for the old site on fast 3G, and 5.2s versus 27s for Flipkart and Treebo on slow 3G.',
+          'Rebuilt the site on AMP in 7 days with Google — 100,000+ pages indexed and among the first sites to ship amp-bind, for a 12% revenue increase. Showcased on stage at Google I/O 2017.',
+        ],
+      },
+      {
+        title: 'Senior Software Engineer', years: 'Jan 2014 – 2016',
+        built: [7],
+        points: [
+          'Built Myntra’s mobile site from scratch with three engineers, first MVP in a couple of weeks, on hardware and browsers down to low-end Android and Opera.',
+          'Engineered Unity, the React framework that standardized development across 50+ internal applications, and sat in most of Myntra’s web UI decisions.',
+        ],
+      },
     ],
   },
   {
-    org: 'Myntra', title: 'Frontend Architect · Senior Software Engineer', years: 'Jan 2014 – Dec 2018', where: 'Bangalore, India',
+    org: 'Intuit',
+    years: 'Jan 2008 – Dec 2013', where: 'Bangalore, India',
+    title: 'Senior Software Engineer',
     points: [
-      'Architected Myntra’s PWA — 37% conversion lift, 100K to 14M monthly users, 3× faster loads, 71% smaller JS bundles.',
-      'Partnered with Google to rebuild the site on AMP in 7 days, driving a 12% revenue increase — showcased on stage at Google I/O 2017.',
-      'Engineered Unity, the framework that standardized development across 50+ internal applications.',
-    ],
-  },
-  {
-    org: 'Intuit', title: 'Senior Software Engineer', years: 'Jan 2008 – Dec 2013', where: 'Bangalore, India',
-    points: [
-      'Engineered a cross-platform hybrid UI framework powering a banking solution across web, native Android and iOS in the QuickBooks ecosystem.',
+      'Built a cross-platform hybrid UI framework across the QuickBooks ecosystem and an online-banking app that ran on desktop, tablets, and inside native Android and iOS webviews.',
+      'Rated “outstanding” in 4 of 5 annual reviews.',
       'Youngest recipient of the Intuit India Innovation Award.',
     ],
   },
@@ -283,7 +337,7 @@ export const experience = [
 export const strengths = {
   Leadership: ['Org design & scaling', 'Platform strategy & architecture', 'GenAI adoption', 'Cross-geo execution', 'Leadership development', 'Operational excellence', 'Stakeholder management'],
   'Applied AI': ['AI agents', 'Multi-agent orchestration', 'RAG', 'Local LLMs', 'On-device inference', 'WebAssembly inference', 'Coding agents', 'Voice interfaces'],
-  Technical: ['JavaScript', 'React', 'Node.js', 'GraphQL', 'Web architecture', 'PWA', 'RPC', 'Microservices', 'Java'],
+  Technical: ['TypeScript', 'JavaScript', 'React', 'Node.js', 'Python', 'GraphQL', 'Webpack', 'Web architecture', 'PWA', 'RPC', 'Microservices', 'Java'],
 };
 
 export const speaking = [
@@ -291,6 +345,7 @@ export const speaking = [
   { y: '2018', t: 'Google AMP Roadshow, Bangalore — keynote on AMP architecture', tag: 'Keynote' },
   { y: '2017', t: 'Fragments Android Conference — Building Practical PWAs at Scale', tag: 'Talk' },
   { y: '2018', t: 'Flipkart SlashN — the Myntra web technology evolution', tag: 'Talk' },
+  { y: '2018', t: 'React Meetup Bangalore — building high-performance sites with React and PWA', tag: 'Talk' },
   { y: '2017', t: 'Google Hack Day — Best Progressive Web App award, Gurugram', tag: 'Award' },
   { y: '2010', t: 'Intuit India Innovation Award', tag: 'Award' },
 ];

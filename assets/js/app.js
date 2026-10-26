@@ -93,8 +93,8 @@ function paint() {
   syncShell();
 }
 
-function jump(path, smooth) {
-  const el = document.getElementById(idFor(path));
+function jump(path, smooth, targetId) {
+  const el = document.getElementById(targetId || idFor(path));
   if (!el) return;
   const glide = smooth && !matchMedia('(prefers-reduced-motion:reduce)').matches;
   lock();
@@ -160,11 +160,11 @@ function animate(fn) {
   t.updateCallbackDone.catch(() => {});
 }
 
-function go(path, push = true) {
+function go(path, push = true, targetId) {
   if (push) history.pushState({}, '', path);
   markNav(path);
   document.title = TITLES[path] || TITLES['/'];
-  jump(path, push);
+  jump(path, push, targetId);
 }
 
 /* ---------------- interaction ---------------- */
@@ -190,7 +190,7 @@ document.addEventListener('click', (e) => {
   if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
   const path = new URL(a.href).pathname;
   e.preventDefault();
-  go(path);
+  go(path, true, a.dataset.target);
 });
 
 addEventListener('popstate', () => go(location.pathname, false));

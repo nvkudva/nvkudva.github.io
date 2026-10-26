@@ -77,6 +77,9 @@ function card(p, i) {
     </article>`;
 }
 
+const miniProject = (index) => `
+    <a class="mini" href="/projects" data-link data-target="plat-${index}">${esc(platforms[index].name.split(' — ')[0])}</a>`;
+
 const socialRow = () => `
   <div class="links">
     ${socials.map((s) => `
@@ -101,31 +104,30 @@ export const home = () => `
       <p class="bio rise" style="animation-delay:.14s">${esc(profile.personal)}</p>
       <div class="cta rise" style="animation-delay:.18s">
         <a class="btn primary" href="${profile.resume}" download>Download résumé ↓</a>
+        <a class="btn" href="https://github.com/nvkudva" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn" href="mailto:${profile.email}">Email</a>
         <a class="btn" href="https://www.linkedin.com/in/nvkudva/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="eyebrow">By the numbers</div>
-    <div class="stats">
-      ${stats.map((s) => `<div class="stat"><b>${esc(s.v)}</b><span>${esc(s.k)}</span></div>`).join('')}
-    </div>
-  </section>
+  <div class="duo">
+    <section>
+      <div class="eyebrow">By the numbers</div>
+      <div class="stats">
+        ${stats.map((s) => `<div class="stat"><b>${esc(s.v)}</b><span>${esc(s.k)}</span></div>`).join('')}
+      </div>
+    </section>
 
-  <section>
-    <div class="eyebrow">How I run an engineering org in the AI era</div>
-    <h2>Four tenets I actually operate by</h2>
-    <p class="sublede">Not predictions. These are the rules I use to decide where humans spend attention.</p>
-    <div class="tenets">
-      ${tenets.map((t, i) => `
-        <div class="tenet">
-          <span class="n">0${i + 1}</span>
-          <h3>${esc(t.t)}</h3>
-          <p>${esc(t.d)}</p>
-        </div>`).join('')}
-    </div>
-  </section>`;
+    <section id="strengths">
+      <div class="eyebrow">Core strengths</div>
+      <div class="sbox">
+        ${Object.entries(strengths).map(([k, v]) => `
+        <h3>${esc(k)}</h3>
+        <div class="chips">${v.map((s) => `<span class="chip">${esc(s)}</span>`).join('')}</div>`).join('')}
+      </div>
+    </section>
+  </div>`;
 
 /* ------------------------------------------------------------------ */
 
@@ -134,8 +136,8 @@ export const projectsView = () => `
     <div class="eyebrow">Platforms · shipped at scale</div>
     <h1 style="font-size:clamp(28px,4vw,44px)">Things I built, not things I approved</h1>
     <div class="openlist">
-      ${platforms.map((p) => `
-        <article class="plat">
+      ${platforms.map((p, i) => `
+        <article class="plat" id="plat-${i}">
           <div>
             <div class="org">${esc(p.org)} <span>${esc(p.years)}</span></div>
             <h3>${esc(p.name)}</h3>
@@ -168,6 +170,14 @@ export const buildingView = () => `
     <div class="cta">
       <a class="btn" href="https://github.com/nvkudva?tab=repositories" target="_blank" rel="noopener noreferrer">All repositories on GitHub ↗</a>
     </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">How I run an engineering org in the AI era</div>
+    <div class="rows">
+      ${tenets.map((t, i) => `
+        <div class="row"><span class="y">0${i + 1}</span><span class="t"><b>${esc(t.t)}</b> — ${esc(t.d)}</span></div>`).join('')}
+    </div>
   </section>`;
 
 /* ------------------------------------------------------------------ */
@@ -178,21 +188,18 @@ export const resumeView = () => `
     <h1 style="font-size:clamp(28px,4vw,44px)">Experience</h1>
   </section>
 
-  <section id="strengths">
-    <div class="eyebrow">Core strengths</div>
-    ${Object.entries(strengths).map(([k, v]) => `
-      <h3>${esc(k)}</h3>
-      <div class="chips">${v.map((s) => `<span class="chip">${esc(s)}</span>`).join('')}</div>`).join('')}
-  </section>
-
   <section id="experience">
     ${experience.map((e) => `
       <article class="job">
-        <div><div class="when">${esc(e.years)}</div><div class="where">${esc(e.where)}</div></div>
-        <div>
-          <h3>${esc(e.title)}</h3>
-          <div class="org">${esc(e.org)}</div>
-          <ul>${e.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
+        <div><div class="org">${esc(e.org)}</div><div class="when">${esc(e.years).replace(' – ', ' –<br>')}</div><div class="where">${esc(e.where)}</div></div>
+        <div class="roles">
+          ${(e.roles || [e]).map((r) => `
+          <div class="role">
+            <h3>${esc(r.title)}</h3>
+            ${e.roles ? `<div class="rng">${esc(r.years)}${r.where ? ` · ${esc(r.where)}` : ''}</div>` : ''}
+            <ul>${r.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
+            ${r.built ? `<div class="built"><span class="blabel">Projects</span>${r.built.map(miniProject).join('')}</div>` : ''}
+          </div>`).join('')}
         </div>
       </article>`).join('')}
   </section>

@@ -180,7 +180,7 @@ export const projects = [
     desc: 'Chrome sidebar extension, a chat and page agent like Claude for Chrome. Talk in the sidebar and let the model edit the current page, powered by LM Studio, Ollama, or any LLM endpoint.',
   },
   {
-    name: 'HyperLight', title: 'Hyperlight', lang: 'Python', updated: '2026-10-18',
+    name: 'HyperLight', title: 'Hyperlight', lang: 'Python', updated: '2026-10-27',
     wip: true, status: 'not-web',
     video: '/public/media/hyperlight.mp4',
     shot: '/public/shots/hyperlight.jpg',

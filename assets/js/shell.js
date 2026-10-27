@@ -139,7 +139,7 @@ export function mountShell() {
 
 export function syncShell() {
   const r = document.documentElement;
-  const dark = r.dataset.mode === 'dark';
+  const dark = (r.dataset.mode || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light')) === 'dark';
 
   document.querySelectorAll('[data-act]').forEach((b) => {
     const act = b.dataset.act;

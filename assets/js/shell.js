@@ -13,10 +13,13 @@ const foot = () => `
   </footer>`;
 
 const summaryDialog = () => `
-  <button class="summarize-fab" type="button" data-summary-open aria-haspopup="dialog">
-    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.2l1.1 3.4L12.6 5.8l-3.5 1.2L8 10.4 6.9 7 3.4 5.8l3.5-1.2L8 1.2zM12.4 9.6l.7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7.7-2.1zM3.6 10.2l.5 1.6 1.6.5-1.6.5-.5 1.6-.5-1.6-1.6-.5 1.6-.5.5-1.6z"/></svg>
-    <span>Summarize</span>
-  </button>
+  <div class="fab-dock">
+    <button class="summarize-fab" type="button" data-summary-open aria-haspopup="dialog">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.2l1.1 3.4L12.6 5.8l-3.5 1.2L8 10.4 6.9 7 3.4 5.8l3.5-1.2L8 1.2zM12.4 9.6l.7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7.7-2.1zM3.6 10.2l.5 1.6 1.6.5-1.6.5-.5 1.6-.5-1.6-1.6-.5 1.6-.5.5-1.6z"/></svg>
+      <span>Summarize</span>
+    </button>
+    ${contactFab()}
+  </div>
 
   <dialog class="summary-dialog" data-summary-dialog aria-labelledby="summary-title">
     <div class="summary-head">
@@ -98,6 +101,28 @@ export const acts = () => `
         </a>
       </div>
 `;
+
+const contactFab = () => {
+  const tel = profile.phones[0].replace(/\s/g, '');
+  const wa = tel.replace(/^\+/, '');
+  return `
+  <div class="contact-fab-wrap" data-contact-wrap>
+    <div class="contact-menu" id="contact-fab-menu" role="menu" data-contact-menu hidden>
+      <a class="contact-item" role="menuitem" href="tel:${tel}">
+        ${hsvg('phone')}<span>Call Now</span>
+      </a>
+      <a class="contact-item" role="menuitem" href="https://wa.me/${wa}" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>WhatsApp</span>
+      </a>
+      <a class="contact-item" role="menuitem" href="mailto:${profile.email}">
+        ${hsvg('mail')}<span>Email</span>
+      </a>
+    </div>
+    <button class="contact-fab" type="button" data-contact-toggle aria-haspopup="menu" aria-expanded="false" aria-controls="contact-fab-menu" aria-label="Contact options" title="Contact">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>
+    </button>
+  </div>`;
+};
 
 const console_ = () => `
   <div class="shell">

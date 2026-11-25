@@ -12,7 +12,7 @@
   --shadow:0 1px 2px rgba(18,21,27,.05), 0 12px 32px -18px rgba(18,21,27,.35);
   --grid:none;
   --rail:250px; --ease:cubic-bezier(.2,.8,.2,1);
-  --display:"Saira",system-ui,-apple-system,sans-serif;
+  --display:"DM Sans",system-ui,-apple-system,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
 /* ---- EXECUTIVE · dark ---- */
@@ -312,18 +312,52 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 .toast .toast-x{padding:7px 10px; color:var(--muted)}
 .toast .toast-x:hover{border-color:var(--accent); color:var(--ink)}
 
-/* ---- summarize: floating action + popup ---- */
-.summarize-fab{
+/* ---- summarize + contact: bottom-right floating dock ---- */
+.fab-dock{
   position:fixed; right:22px; bottom:22px; z-index:60;
+  display:flex; align-items:center; gap:10px;
+}
+.summarize-fab{
+  height:42px;
   display:inline-flex; align-items:center; gap:8px;
-  padding:11px 18px; border-radius:999px; cursor:pointer;
+  padding:0 18px; border-radius:999px; cursor:pointer;
   background:var(--ink); color:var(--paper); border:1px solid var(--ink);
-  font-family:var(--mono); font-size:12.5px; letter-spacing:.04em;
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.04em; line-height:1;
   box-shadow:0 10px 28px -10px rgba(18,21,27,.45);
   transition:transform .22s var(--ease), box-shadow .22s var(--ease), background .22s var(--ease);
 }
 .summarize-fab svg{width:14px; height:14px; fill:currentColor; flex:none}
 .summarize-fab:hover{transform:translateY(-2px); background:var(--accent); border-color:var(--accent); color:var(--on-accent)}
+
+/* ---- contact: floating action + menu ---- */
+.contact-fab-wrap{position:relative}
+.contact-fab{
+  width:42px; height:42px; display:grid; place-items:center;
+  border-radius:999px; cursor:pointer;
+  background:var(--ink); color:var(--paper); border:1px solid var(--ink);
+  box-shadow:0 10px 28px -10px rgba(18,21,27,.45);
+  transition:transform .22s var(--ease), box-shadow .22s var(--ease), background .22s var(--ease);
+}
+.contact-fab svg{width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round}
+.contact-fab:hover, .contact-fab[aria-expanded="true"]{transform:translateY(-2px); background:var(--accent); border-color:var(--accent); color:var(--on-accent)}
+.contact-menu{
+  position:absolute; right:0; bottom:52px; min-width:172px;
+  padding:6px; border-radius:12px;
+  background:var(--surface); color:var(--ink);
+  border:1px solid var(--line); box-shadow:var(--shadow);
+  display:grid; gap:2px;
+  animation:summary-in .18s var(--ease) both;
+}
+.contact-menu[hidden]{display:none}
+.contact-item{
+  display:flex; align-items:center; gap:10px;
+  padding:9px 12px; border-radius:8px;
+  font-family:var(--display); font-size:13.5px; font-weight:500; color:var(--ink);
+  transition:background .15s var(--ease), color .15s var(--ease);
+}
+.contact-item svg{width:15px; height:15px; flex:none; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; color:var(--muted)}
+.contact-item:hover, .contact-item:focus-visible{background:var(--accent-soft); color:var(--accent); outline:none}
+.contact-item:hover svg, .contact-item:focus-visible svg{color:var(--accent)}
 .summary-dialog{
   width:min(680px, calc(100vw - 32px)); max-height:min(82vh, 860px);
   padding:0; border:1px solid var(--line); border-radius:14px;
@@ -376,7 +410,8 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 .summary-org{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:5px}
 .summary-entry p{font-size:14.5px; line-height:1.6; margin:0}
 @media (max-width:640px){
-  .summarize-fab{right:16px; bottom:16px; padding:11px 16px; font-size:13px}
+  .fab-dock{right:16px; bottom:16px}
+  .summarize-fab{padding:0 16px; font-size:13px}
   .summary-head{padding:16px 16px 13px}
   .summary-head h2{font-size:18px}
   .summary-body{padding:16px}

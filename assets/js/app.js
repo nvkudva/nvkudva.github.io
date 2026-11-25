@@ -248,12 +248,37 @@ function closeSummary() {
   clearTimeout(summaryTimer);
   if (dialog?.open) dialog.close();
 }
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeContactMenu();
+});
+
 document.addEventListener('close', (e) => {
   if (e.target.matches?.('[data-summary-dialog]') && !e.target.open) clearTimeout(summaryTimer);
 }, true);
 
+function closeContactMenu() {
+  const menu = document.querySelector('[data-contact-menu]');
+  const btn = document.querySelector('[data-contact-toggle]');
+  if (!menu || menu.hidden) return;
+  menu.hidden = true;
+  if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
 /* ---------------- interaction ---------------- */
 document.addEventListener('click', (e) => {
+  if (e.target.closest('[data-contact-toggle]')) {
+    const menu = document.querySelector('[data-contact-menu]');
+    const btn = document.querySelector('[data-contact-toggle]');
+    if (menu && btn) {
+      const opening = menu.hidden;
+      menu.hidden = !opening;
+      btn.setAttribute('aria-expanded', String(opening));
+    }
+    return;
+  }
+  if (e.target.closest('[data-contact-menu] a')) { closeContactMenu(); return; }
+  if (!e.target.closest('[data-contact-wrap]')) closeContactMenu();
+
   if (e.target.closest('[data-summary-open]')) { openSummary(); return; }
   if (e.target.closest('[data-summary-close]')) { closeSummary(); return; }
   const dialog = e.target.closest('[data-summary-dialog]');

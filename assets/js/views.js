@@ -106,7 +106,7 @@ const socialRow = () => `
 
 export const home = () => `
   <section class="hero">
-    <div>
+    <div class="hero-top">
       <div class="statusline rise" style="animation-delay:.06s">
         <span>${esc(profile.location)}</span>
       </div>
@@ -114,6 +114,9 @@ export const home = () => `
         <h1>${esc(profile.name)}</h1>
         ${acts()}
       </div>
+    </div>
+
+    <div>
       <p class="lede rise" style="animation-delay:.1s">${profile.lede[0]}</p>
       <p class="bio rise" style="animation-delay:.14s">${esc(profile.personal)}</p>
       <div class="pedigree rise" style="animation-delay:.18s">${esc(profile.pedigree)}</div>
@@ -123,18 +126,16 @@ export const home = () => `
         </a>
       </div>
     </div>
-  </section>
 
-  <div class="duo">
-    <section id="strengths">
+    <aside id="strengths" class="rise" style="animation-delay:.18s" aria-label="Core strengths">
       <div class="eyebrow">Core strengths</div>
       <div class="sbox">
         ${Object.entries(strengths).map(([k, v]) => `
         <h3>${esc(k)}</h3>
         <div class="chips">${v.map((s) => `<span class="chip">${esc(s)}</span>`).join('')}</div>`).join('')}
       </div>
-    </section>
-  </div>`;
+    </aside>
+  </section>`;
 
 /* ------------------------------------------------------------------ */
 
@@ -220,7 +221,9 @@ export const resumeView = () => `
           <div class="role">
             <h3>${esc(r.title)}</h3>
             ${e.roles ? `<div class="rng">${esc(r.years)}${r.where ? ` · ${esc(r.where)}` : ''}</div>` : ''}
-            <ul>${r.points.map((p) => `<li>${rich(p)}</li>`).join('')}</ul>
+            ${r.groups
+              ? r.groups.map((g) => `<div class="rgroup"><h4 class="rgtitle">${esc(g.title)}</h4><ul>${g.points.map((p) => `<li>${rich(p)}</li>`).join('')}</ul></div>`).join('')
+              : `<ul>${r.points.map((p) => `<li>${rich(p)}</li>`).join('')}</ul>`}
             ${r.built ? `<div class="built"><span class="blabel">Projects</span>${r.built.map(miniProject).join('')}</div>` : ''}
             ${r.builtProjects ? `<div class="built"><span class="blabel">Projects</span>${r.builtProjects.map(shippedProject).join('')}</div>` : ''}
           </div>`).join('')}

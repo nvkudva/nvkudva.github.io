@@ -90,7 +90,7 @@ export const platforms = [
     name: 'BlissNxt: Next-Gen Customer Care UI',
     org: 'Uber',
     years: '2019 – 2021',
-    body: 'Built Uber’s next-generation Customer Care UI serving **30,000+ global agents** on **millions of tickets**, plus the Blis mosaic component library that later seeded multiple CO apps.',
+    body: 'Built Uber’s next-generation Customer Care UI serving **30,000+ global agents** on **millions of tickets**, plus the **Bliss Mosaic** component library that later seeded multiple CO apps.',
     metrics: [
       ['3×', 'faster loads'],
       ['40%', 'faster ticket resolution'],
@@ -289,32 +289,58 @@ export const experience = [
       {
         title: 'Engineering Manager II', years: 'Dec 2018 – May 2025', where: 'California, USA',
         built: [0, 1],
-        points: [
-          'Scaled the org from **3 to 24+ engineers across the US, India and Brazil**; onboarded 2 engineering managers and their 14-engineer teams into one **cross-geo pod structure**.',
-          'Owned the strategic roadmap for Uber’s business onboarding platform inside Customer Obsession, and spearheaded **CO Console** — cutting **onboarding time by up to 90%**.',
-          'Orchestrated integrations across **12+ business lines and 8+ third-party partners** (Instacart, NYTaxi, Yellow Cabs) and autonomous mobility partners (**Motional, WeRide, Waymo**).',
-          'Drove the **Salesforce → CO migration**, delivering an **84% licensing reduction** saving millions from 2024 onward.',
-          'Led **conversational channel platform** work across Chat, WhatsApp and Email.',
+        groups: [
+          {
+            title: 'Org Scaling, Strategy & Operational Excellence',
+            points: [
+              '**Global Organization Scaling:** Scaled the Customer Obsession (CO) platform organization from **3 to 24+ engineers** across the US, India, and Brazil; onboarded and mentored 2 Engineering Managers and their 14-engineer teams with unified pod structures across time zones.',
+              '**Product & Platform Vision:** Spearheaded the multi-year product roadmap for **CO Console**, Uber’s centralized customer care configuration and onboarding platform, aligning engineering execution with global operations leadership.',
+              '**Engineering Velocity & Operational Impact:** Instituted rigorous planning, triaging, and observability standards that **cut average project development cycles by 50%** and **halved agent issue resolution times** across global support operations.',
+            ],
+          },
+          {
+            title: 'Platform Architecture & Enterprise Cost Efficiency',
+            points: [
+              '**90% Faster Business Onboarding:** Architected and delivered **CO Console**, reducing new-business launch timelines from months to days (**90% faster**).',
+              '**Cross-Business & Autonomous Mobility Integrations:** Orchestrated platform integrations across **12+ Uber business lines** and autonomous mobility partners (Motional, WeRide, Waymo), unlocking **multi-million-dollar operational efficiencies**.',
+              '**Vendor Consolidation & Licensing Savings:** Drove the **Salesforce → CO migration**, reducing **Salesforce license usage by 84%** from 2024 onward and **saving millions in annual licensing costs**.',
+              '**Multi-Channel Modality Infrastructure:** Led the multi-channel support platform across Chat, WhatsApp, and Email, re-architecting the B2B email ecosystem into an adaptable ingestion framework for centralized support.',
+            ],
+          },
+          {
+            title: 'GenAI Innovation',
+            points: [
+              '**Enterprise GenAI Launch:** Led the experimental architecture and production integration of **Uber’s first GenAI-powered support bot** for Uber for Business customers on the core customer-care infrastructure.',
+            ],
+          },
         ],
       },
       {
         title: 'Engineering Manager I', years: '2018 – 2021', where: 'Bangalore, India',
         built: [2, 3],
-        points: [
-          'Led **16+ engineers** on the **Customer Care UI platform modernization** across multiple apps.',
-          'Built the strategy for the **omnichannel support solution**, the most complex piece of the program.',
-          'Hired across architecture, hiring-manager and campus lead rounds, and **grew upcoming leaders** in the team.',
-          'Cultivated a **cross-org UI community** with discussion forums and feedback loops, building trust across **US, Latin America and India**.',
+        groups: [
+          {
+            title: 'Global UI Platform Modernization',
+            points: [
+              '**Org & Platform Modernization:** Led **16+ engineers** to execute the end-to-end modernization of Uber’s Customer Care UI platform across multiple mission-critical applications.',
+              '**80%+ Faster Widget Delivery:** Architected the web-stack modernization and migration strategy, cutting widget development timelines from **4 weeks to 5 days (80%+ reduction)** while fostering an internal platform community.',
+              '**Unified Middleware & Hydration Architecture:** Evangelized and delivered a **GraphQL and RPC middleware layer** connecting UI surfaces to Uber’s core backend services, unifying backend hydration and frontend rendering onto a single platform.',
+            ],
+          },
         ],
       },
       {
         title: 'Senior Software Engineer', years: '2018 – 2021', where: 'Bangalore, India',
         built: [4],
-        points: [
-          'Built **BlissNxt** serving **30,000+ global agents** with **3× faster loads** and **40% faster ticket resolution**.',
-          'Cut widget migration from **15 steps and 23 statuses to 7**, shrinking widget development from **4 weeks to 5 days**.',
-          'Ran the BlissNxt migration with the **running support business intact**.',
-          'Shipped on Salesforce Virtual GL, Bliss-Insights and help.uber.com automation components rather than rebuilding them.',
+        groups: [
+          {
+            title: 'Next-Gen Customer Care UI – BlissNxt',
+            points: [
+              '**Global Agent Platform:** Built **BlissNxt**, Uber’s next-generation Customer Care UI serving **30,000+ global support agents** handling millions of tickets, achieving **3× faster page loads** and **40% faster ticket resolution**.',
+              '**Design System & Case Management:** Architected **Bliss Mosaic**, a foundational component library adopted across multiple CO applications, and built a **multi-ticket Case Management application** to resolve complex safety and legal escalations.',
+              '**Engineering Community:** Cultivated a cross-org UI community through technical discussion forums and feedback loops, driving decentralized innovation and collective knowledge sharing across Uber India.',
+            ],
+          },
         ],
       },
     ],
@@ -326,17 +352,28 @@ export const experience = [
       {
         title: 'Frontend Architect', years: '2016 – Dec 2018',
         built: [5, 6],
-        points: [
-          'Architected **Myntra’s PWA**: **37% conversion lift**, **100K to 14M monthly users**, **3× faster loads**, **71% smaller JS bundles**. Served from 6 Node servers behind Akamai: 3.1s vs 9.4s on fast 3G, and 5.2s vs 27s for Flipkart and Treebo on slow 3G.',
-          'Rebuilt the site on **AMP in 7 days** with Google — **100,000+ pages indexed**, among the first to ship amp-bind, driving a **12% revenue increase**. Showcased on stage at **Google I/O 2017**.',
+        groups: [
+          {
+            title: 'Myntra Consumer Website',
+            points: [
+              '**37% Mobile Conversion Lift (PWA):** Architected Myntra’s Progressive Web App from scratch, scaling from **100K to 14M monthly users** with **3× faster loads**, **71% smaller JS bundles**, and a **37% conversion lift**.',
+              '**12% Revenue Lift & Google I/O Showcase (AMP):** Partnered with Google to rebuild the mobile experience on AMP in 7 days, driving a **12% revenue increase** — showcased on stage at the **Google I/O 2017 Keynote**.',
+              '**Post-Acquisition Stack Integration:** Demonstrated high architectural scalability by seamlessly integrating the **Jabong technology stack** into Myntra’s core web platform.',
+            ],
+          },
         ],
       },
       {
         title: 'Senior Software Engineer', years: 'Jan 2014 – 2016',
         built: [7],
-        points: [
-          'Built **Myntra’s mobile site from scratch** with three engineers, first MVP in a couple of weeks, down to low-end Android and Opera.',
-          'Engineered **Unity**, the React framework that standardized development across **50+ internal applications**, and shaped most of Myntra’s web UI decisions.',
+        groups: [
+          {
+            title: 'Myntra Enterprise UI Ecosystem',
+            points: [
+              '**Unity Application Framework:** Engineered **Unity**, a from-scratch UI framework (template architecture, smart component library, thematic engine) that standardized development across **50+ internal applications**.',
+              '**90% Faster App Delivery:** Conceptualized a configuration-driven UI model that accelerated application delivery by **90%**, cutting launch timelines from **8 weeks to 7 days**.',
+            ],
+          },
         ],
       },
     ],
@@ -346,18 +383,16 @@ export const experience = [
     years: 'Jan 2008 – Dec 2013', where: 'Bangalore, India',
     title: 'Senior Software Engineer',
     points: [
-      'Built a **cross-platform hybrid UI framework** across the QuickBooks ecosystem and an online-banking app running on desktop, tablets, and native Android/iOS webviews.',
-      'Rated **“outstanding” in 4 of 5 annual reviews**.',
-      'Won the **Intuit Android App Challenge** in 2011.',
-      '**Youngest recipient** of the **Intuit India Innovation Award**.',
+      '**Cross-Platform Hybrid Banking Framework:** Architected a company-wide hybrid UI framework (HTML5, SASS, Backbone, SPA) powering core online banking across desktop, mobile web, and embedded iOS/Android apps within the QuickBooks ecosystem.',
+      '**Full-Stack & Multi-Platform Delivery:** Built and scaled B2C web and native Android financial applications across Java, JSP, and modern web stacks.',
+      '**Innovation & Recognition:** **Youngest recipient** of the **Intuit India Innovation Award**, earning multiple internal awards for product prototypes built during 10% innovation time; rated **“outstanding” in 4 of 5 annual reviews** and won the **Intuit Android App Challenge** (2011).',
     ],
   },
 ];
 
 export const strengths = {
-  Leadership: ['Org design & scaling', 'Platform strategy & architecture', 'GenAI adoption', 'Cross-geo execution', 'Leadership development', 'Operational excellence', 'Stakeholder management'],
-  'Applied AI': ['AI agents', 'Multi-agent orchestration', 'Local LLMs', 'On-device inference', 'WebAssembly inference', 'Coding agents', 'Voice interfaces'],
-  Technical: ['JavaScript', 'React', 'Node.js', 'GraphQL', 'Web architecture', 'PWA', 'RPC', 'Microservices', 'Java'],
+  Leadership: ['Org Design & Scaling', 'Platform Strategy & Architecture', 'GenAI Adoption', 'Cross-Geo Execution', 'Leadership Development', 'Operational Excellence'],
+  Technical: ['JavaScript', 'React', 'Node.js', 'GraphQL', 'PWA', 'Micro Services', 'Java', 'AI Agents', 'Multi-Agent Orchestration', 'Local LLMs', 'In-Browser LLMs'],
 };
 
 export const speaking = [

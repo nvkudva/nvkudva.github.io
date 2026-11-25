@@ -75,7 +75,7 @@ button{font:inherit}
 .nav a:hover{background:var(--surface-2); color:var(--ink)}
 .nav a[aria-current]{background:var(--accent-soft); color:var(--ink); font-weight:600}
 .nav a[aria-current]::before{height:17px}
-@media (min-width:961px){ .nav a{font-size:20px; padding:12px 16px} .nav a[aria-current]::before{height:24px} }
+@media (min-width:1025px), (min-width:961px) and (orientation:landscape){ .nav a{font-size:20px; padding:12px 16px} .nav a[aria-current]::before{height:24px} }
 .ctl{display:flex; flex-direction:column; gap:6px; margin-top:auto}
 
 /* The hero, reduced to its essentials: on a desktop the rail already holds the
@@ -101,23 +101,23 @@ button{font:inherit}
 .topbar.on > :nth-child(3){transition-delay:.1s}
 .tb-name{font-size:15px; font-weight:600; letter-spacing:-.012em; transition-property:font-size,opacity,transform}
 .tb-role{font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:var(--muted)}
-.tb-acts{margin-left:auto; display:flex; align-items:center; gap:16px}
+.tb-acts{margin-left:auto; display:flex; align-items:center; gap:18px}
 .tba{
-  display:inline-flex; align-items:center; gap:7px; white-space:nowrap;
-  font-family:var(--mono); font-size:11px; letter-spacing:.03em;
+  display:inline-flex; align-items:center; gap:8px; white-space:nowrap;
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.03em;
   color:var(--muted); text-decoration:none;
   transition:color .18s var(--ease);
 }
-.tba svg{width:13px; height:13px; fill:currentColor; flex:none; opacity:.8}
+.tba svg{width:15px; height:15px; fill:currentColor; flex:none; opacity:.8}
 .tba:hover{color:var(--accent)}
 .tba:hover svg{opacity:1}
 @media (max-width:1200px){ .tb-role{display:none} }
 @media (max-width:1040px){
-  .tb-acts{gap:14px}
+  .tb-acts{gap:16px}
   .tba span{display:none}
-  .tba svg{width:15px; height:15px}
+  .tba svg{width:18px; height:18px}
 }
-@media (min-width:961px){ .topbar{display:flex} }
+@media (min-width:1025px), (min-width:961px) and (orientation:landscape){ .topbar{display:flex} }
 
 /* ============================================================ main */
 main{padding:0 clamp(20px,4vw,64px) 36px; max-width:1180px}
@@ -140,16 +140,20 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 .sublede{color:var(--muted); max-width:66ch; margin:-4px 0 18px}
 
 /* ---- hero ---- */
-.hero{display:grid; grid-template-columns:minmax(0,1fr); gap:36px; align-items:start}
+.hero{display:grid; grid-template-columns:minmax(0,1fr); gap:14px 32px; align-items:start}
+.hero-top{grid-column:1 / -1}
+@media (min-width:1025px), (min-width:961px) and (orientation:landscape){
+  .hero{grid-template-columns:minmax(0,1.35fr) minmax(260px,.85fr)}
+}
 .herohead{display:flex; align-items:center; gap:10px 22px; flex-wrap:wrap}
 .herohead h1{flex:1 1 auto; min-width:min(100%, 12ch)}
 .herohead .tb-acts{align-self:center}
-.herohead .tba{font-size:14px; gap:8px}
-.herohead .tba svg{width:16px; height:16px}
+.herohead .tba{font-size:15.5px; gap:9px}
+.herohead .tba svg{width:18px; height:18px}
 .statusline{font-family:var(--mono); font-size:12px; color:var(--muted); display:flex; flex-wrap:wrap; gap:8px 16px; margin-bottom:16px}
 .statusline b{color:var(--pos); font-weight:500}
 .pedigree{font-family:var(--mono); font-size:12px; font-weight:600; color:var(--ink-2); margin-top:14px}
-.lede{font-size:18.5px; line-height:1.58; color:var(--ink-2); max-width:58ch; margin-top:12px}
+.lede{font-size:18.5px; line-height:1.58; color:var(--ink-2); max-width:58ch; margin-top:0}
 .lede em{color:var(--ink); font-style:normal; font-weight:600}
 /* The one human line, right above the calls to action. */
 .bio{font-size:17px; line-height:1.62; margin-top:14px; max-width:64ch}
@@ -218,6 +222,8 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 .job h3{font-size:18px; margin-bottom:3px}
 .roles{display:grid; gap:18px}
 .rng{font-family:var(--mono); font-size:10.5px; color:var(--muted); margin-bottom:8px}
+.rgtitle{font-family:var(--mono); font-size:11.5px; font-weight:600; letter-spacing:.03em; color:var(--ink); margin:12px 0 6px}
+.rgroup:first-of-type .rgtitle{margin-top:4px}
 .job .org{font-family:var(--mono); font-size:11.5px; color:var(--ink); letter-spacing:.06em; text-transform:uppercase; margin-bottom:4px}
 .job ul{margin:0; padding-left:17px; color:var(--ink-2)}
 .job li{margin-bottom:7px; font-size:14.5px; max-width:66ch}
@@ -228,29 +234,23 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 .mini:hover{border-bottom-color:var(--accent)}
 .plat{scroll-margin-top:calc(var(--stick,0px) + 16px)}
 
-.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:8px}
-.chips + h3{margin-top:18px}
-.chip{font-family:var(--mono); font-size:11.5px; padding:5px 11px; border:1px solid var(--line); border-radius:20px; color:var(--ink-2); background:var(--surface); transition:border-color .25s, color .25s}
-.chip:hover{border-color:var(--accent); color:var(--ink)}
-
 /* ---- résumé header + compact strengths ---- */
 .resumetop{padding-bottom:8px}
 .duo{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); gap:0 28px}
 .duo > section{display:flex; flex-direction:column}
 .duo .stats, .sbox{flex:1}
 .duo .stats{grid-auto-flow:row; grid-template-columns:1fr 1fr}
-.sbox{border:1px solid var(--line); border-radius:6px; padding:12px 14px}
-#strengths h3{font-size:13.5px; margin:0}
-#strengths .chips{gap:6px; margin-top:6px}
-#strengths .chips + h3{margin-top:12px}
-#strengths .chip{font-size:9.5px; padding:3px 9px}
-@media (min-width:961px){
+.sbox{border:1px solid var(--line); border-radius:6px; padding:10px 12px; background:var(--surface)}
+#strengths h3{font-size:12px; margin:0}
+#strengths .chips{display:flex; flex-wrap:wrap; gap:4px; margin-top:5px}
+#strengths .chips + h3{margin-top:9px}
+#strengths .chip{font-family:var(--mono); font-size:9.5px; line-height:1.25; padding:2px 7px; border:1px solid var(--line); border-radius:20px; color:var(--ink-2); background:var(--paper); transition:border-color .25s, color .25s}
+#strengths .chip:hover{border-color:var(--accent); color:var(--ink)}
+@media (min-width:1025px), (min-width:961px) and (orientation:landscape){
   .duo{grid-template-columns:1fr; gap:4px}
   .duo .stats{grid-auto-flow:column; grid-template-columns:none}
   .stat{padding:10px 14px}
   .stat b{font-size:24px}
-  .sbox{display:grid; grid-template-columns:max-content 1fr; align-items:center; gap:8px 18px; padding:10px 14px}
-  #strengths .chips, #strengths .chips + h3{margin-top:0}
 }
 
 .rows{border-top:1px solid var(--line)}
@@ -391,7 +391,8 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 @media (max-width:1100px){
   .duo{grid-template-columns:1fr}
 }
-@media (max-width:960px){
+/* Desktop on landscape tablets & monitors; mobile on phones, foldables, & portrait tablets. */
+@media (max-width:960px), (max-width:1024px) and (orientation:portrait){
   .footwrap{margin-left:0}
   .shell{grid-template-columns:1fr}
   .rail{position:sticky; top:0; z-index:20; height:auto; flex-direction:row; align-items:center; flex-wrap:wrap; gap:12px 16px; border-right:0; border-bottom:1px solid var(--line); padding:14px 18px}
@@ -551,8 +552,6 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
   .job h3{font-size:16px}
   .job .when,.job .where,.job .org{font-size:9.5px}
   .job li{font-size:11.5px; margin-bottom:5px}
-  .chips{margin-top:6px}
-  .chip{font-size:9px; padding:3px 8px}
   .tags{gap:5px}
   .tag{font-size:9px}
   .rows .row{padding:10px}

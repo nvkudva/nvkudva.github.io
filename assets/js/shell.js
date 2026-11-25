@@ -87,7 +87,7 @@ export const acts = () => `
           ${svg('linkedin')}<span>LinkedIn</span>
         </a>
         <a class="tba" href="${profile.resume}" download aria-label="Download résumé" title="Download résumé">
-          ${svg('doc')}<span>Résumé</span>
+          ${svg('download')}<span>Résumé</span>
         </a>
       </div>
 `;

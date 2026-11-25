@@ -60,7 +60,7 @@ function markNav(path) {
 function stick() {
   const rail = document.querySelector('.rail');
   let h = 0;
-  if (rail && matchMedia('(max-width:960px)').matches) h = rail.getBoundingClientRect().height;
+  if (rail && getComputedStyle(rail).borderRightWidth === '0px') h = rail.getBoundingClientRect().height;
   const bar = document.querySelector('.topbar');
   if (bar && getComputedStyle(bar).display !== 'none') h += bar.offsetHeight;
   root.style.setProperty('--stick', `${Math.round(h)}px`);

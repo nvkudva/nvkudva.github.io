@@ -102,21 +102,27 @@ button{font:inherit}
 .topbar.on > :nth-child(3){transition-delay:.1s}
 .tb-name{font-size:15px; font-weight:600; letter-spacing:-.012em; transition-property:font-size,opacity,transform}
 .tb-role{font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:var(--muted)}
-.tb-acts{margin-left:auto; display:flex; align-items:center; gap:18px}
+.tb-acts{margin-left:auto; display:flex; align-items:center; gap:10px}
 .tba{
-  display:inline-flex; align-items:center; gap:8px; white-space:nowrap;
+  display:inline-flex; align-items:center; gap:7px; white-space:nowrap;
+  padding:5px 9px; border-radius:7px;
   font-family:var(--mono); font-size:12.5px; letter-spacing:.03em;
   color:var(--muted); text-decoration:none;
-  transition:color .18s var(--ease);
+  transition:color .18s var(--ease), background .18s var(--ease), transform .18s var(--ease);
 }
-.tba svg{width:15px; height:15px; fill:currentColor; flex:none; opacity:.8}
-.tba:hover{color:var(--accent)}
+.tba svg{
+  width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.85;
+  stroke-linecap:round; stroke-linejoin:round; flex:none; opacity:.85;
+  transition:opacity .18s var(--ease);
+}
+.tba:hover{color:var(--accent); background:var(--surface-2)}
 .tba:hover svg{opacity:1}
 @media (max-width:1200px){ .tb-role{display:none} }
 @media (max-width:1040px){
-  .tb-acts{gap:16px}
+  .tb-acts{gap:6px}
+  .tba{padding:6px}
   .tba span{display:none}
-  .tba svg{width:18px; height:18px}
+  .tba svg{width:19px; height:19px}
 }
 @media (min-width:1025px), (min-width:961px) and (orientation:landscape){ .topbar{display:flex} }
 
@@ -148,9 +154,9 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 }
 .herohead{display:flex; align-items:center; gap:10px 18px; flex-wrap:wrap}
 .herohead h1{flex:1 1 auto; min-width:min(100%, 12ch); font-size:clamp(34px,4.2vw,54px)}
-.herohead .tb-acts{align-self:center; gap:16px}
-.herohead .tba{font-size:15px; gap:8px}
-.herohead .tba svg{width:17px; height:17px}
+.herohead .tb-acts{align-self:center; gap:8px}
+.herohead .tba{font-size:15px; gap:8px; padding:6px 10px}
+.herohead .tba svg{width:18px; height:18px}
 .statusline{font-family:var(--mono); font-size:12px; color:var(--muted); display:flex; flex-wrap:wrap; gap:8px 16px; margin-bottom:16px}
 .statusline b{color:var(--pos); font-weight:500}
 .pedigree{font-family:var(--mono); font-size:12px; font-weight:600; color:var(--ink-2); margin-top:14px}

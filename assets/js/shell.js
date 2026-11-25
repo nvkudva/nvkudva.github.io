@@ -1,6 +1,4 @@
-import { profile, icons } from './data.js';
-
-const svg = (k) => `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="${icons[k]}"/></svg>`;
+import { profile } from './data.js';
 
 const NAV = [
   ['/', 'Overview'],
@@ -73,21 +71,30 @@ const summaryDialog = () => `
     </div>
   </dialog>`;
 
+/* Lucide-style 24px stroke icons (MIT) for crisp, modern header actions. */
+const headerIcons = {
+  phone: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  mail: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+  linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>',
+  download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>',
+};
+const hsvg = (k) => `<svg viewBox="0 0 24 24" aria-hidden="true">${headerIcons[k]}</svg>`;
+
 /* ---------------------------------------------------------- console */
 /* Shared with the hero: the same contact actions, next to the name there too. */
 export const acts = () => `
       <div class="tb-acts">
         <a class="tba" href="tel:${profile.phones[0].replace(/\s/g, '')}" aria-label="Call ${profile.phones[0]}" title="Call">
-          ${svg('phone')}<span>${profile.phones[0]}</span>
+          ${hsvg('phone')}<span>${profile.phones[0]}</span>
         </a>
         <a class="tba" href="mailto:${profile.email}" aria-label="Email ${profile.email}" title="Email">
-          ${svg('mail')}<span>Email</span>
+          ${hsvg('mail')}<span>Email</span>
         </a>
         <a class="tba" href="https://www.linkedin.com/in/nvkudva/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
-          ${svg('linkedin')}<span>LinkedIn</span>
+          ${hsvg('linkedin')}<span>LinkedIn</span>
         </a>
         <a class="tba" href="${profile.resume}" download aria-label="Download résumé" title="Download résumé">
-          ${svg('download')}<span>Résumé</span>
+          ${hsvg('download')}<span>Résumé</span>
         </a>
       </div>
 `;

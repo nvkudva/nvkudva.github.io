@@ -272,9 +272,9 @@ export const projects = [
 
 export const experience = [
   {
-    org: 'AI & Tech Enthusiast',
+    org: 'Independent',
     years: 'May 2025 – Present', where: 'India',
-    title: 'Career Break Turned AI Learning Spree',
+    title: 'Career Break & Applied AI Exploration',
     builtProjects: ['omni-api', 'vega-web', 'Smart-News', 'HyperLight'],
     points: [
       'Planned break after relocating from the US to India; used it to go **deep, hands-on, into applied AI**.',

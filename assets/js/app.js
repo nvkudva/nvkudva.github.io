@@ -160,12 +160,16 @@ function jump(path, smooth, targetId) {
 
 /* `html { scroll-behavior: smooth }` outranks a behavior:'auto' option in some
    engines, so an instant landing has to switch the CSS off around the scroll. */
-function snap(el, glide) {
-  if (glide) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+function scrollInstant(fn) {
   const prev = root.style.scrollBehavior;
   root.style.scrollBehavior = 'auto';
-  el.scrollIntoView({ block: 'start' });
+  fn();
   root.style.scrollBehavior = prev;
+}
+
+function snap(el, glide) {
+  if (glide) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+  scrollInstant(() => el.scrollIntoView({ block: 'start' }));
 }
 
 /* Webfonts and lazy screenshots change the height of everything above the
@@ -217,10 +221,13 @@ function animate(fn) {
 }
 
 function go(path, push = true, targetId) {
-  if (push) history.pushState({}, '', path);
+  if (push) {
+    if (targetId) history.replaceState({ ...history.state, scrollY: window.scrollY }, '');
+    history.pushState(targetId ? { targetId } : {}, '', path);
+  }
   markNav(path);
   document.title = TITLES[path] || TITLES['/'];
-  jump(path, push, targetId);
+  jump(path, push && !targetId, targetId);
 }
 
 /* ---------------- summary popup ---------------- */
@@ -285,7 +292,16 @@ document.addEventListener('click', (e) => {
   go(path, true, a.dataset.target || a.hash.slice(1));
 });
 
-addEventListener('popstate', () => go(location.pathname, false));
+addEventListener('popstate', (e) => {
+  if (typeof e.state?.scrollY === 'number') {
+    lock();
+    markNav(location.pathname);
+    document.title = TITLES[location.pathname] || TITLES['/'];
+    scrollInstant(() => window.scrollTo(0, e.state.scrollY));
+    return;
+  }
+  go(location.pathname, false, e.state?.targetId);
+});
 addEventListener('resize', stick);
 
 systemDark.addEventListener('change', (e) => {

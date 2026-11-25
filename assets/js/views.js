@@ -116,6 +116,11 @@ export const home = () => `
       <p class="lede rise" style="animation-delay:.1s">${profile.lede[0]}</p>
       <p class="bio rise" style="animation-delay:.14s">${esc(profile.personal)}</p>
       <div class="pedigree rise" style="animation-delay:.18s">${esc(profile.pedigree)}</div>
+      <div class="cta rise" style="animation-delay:.22s">
+        <a class="btn primary" href="${profile.resume}" download aria-label="Download résumé (PDF, ${esc(profile.resumeMeta.size)})">
+          ${svg('download')}<span>Download Résumé</span><span class="btn-meta">PDF · ${esc(profile.resumeMeta.size)}</span>
+        </a>
+      </div>
     </div>
   </section>
 

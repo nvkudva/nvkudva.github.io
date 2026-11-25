@@ -160,6 +160,8 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
   background:var(--surface); color:var(--ink); cursor:pointer; display:inline-flex; gap:8px; align-items:center;
   transition:transform .22s var(--ease), box-shadow .22s var(--ease), background .25s var(--ease), border-color .25s;
 }
+.btn svg{width:14px; height:14px; fill:currentColor; flex:none}
+.btn-meta{opacity:.68; font-size:.9em}
 .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow); border-color:var(--accent)}
 .btn.primary{background:var(--ink); color:var(--paper); border-color:var(--ink)}
 

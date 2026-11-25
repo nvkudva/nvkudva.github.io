@@ -187,7 +187,7 @@ export const projects = [
     wip: true, status: 'not-web',
     video: '/public/media/hyperlight.mp4',
     shot: '/public/shots/hyperlight.jpg',
-    desc: 'Spotlight replaced on Apple Silicon: documents, code, photos, mail, contacts, calendar and System Settings in one semantic index. EmbeddingGemma 2 for meaning and Whisper for voice search, with gemma2:2b answering questions over the top matches, every one of them on the Mac, nothing leaves it.',
+    desc: 'Search your whole Mac by meaning, from the menu bar: documents, code, photos, mail, contacts, calendar, apps and System Settings in one semantic index. EmbeddingGemma 2 for meaning and Whisper for voice search, with gemma2:2b answering questions over the top matches, every one of them on the Mac, nothing leaves it.',
   },
   {
     name: 'activity-monitor-pro', title: 'Activity Monitor Pro', lang: 'Swift', updated: '2026-10-14',

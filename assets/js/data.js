@@ -8,11 +8,11 @@ export const profile = {
   status: 'Open to Senior Engineering Leadership roles, globally',
   email: 'nvkudva@gmail.com',
   phones: ['+91 96325 44966', '+1 650 772 1555'],
-  resume: '/public/resume/Vijay-Krishna-Kudva-Resume.pdf',
-  resumeMeta: { size: '98 KB', updated: 'Updated 2026' },
+  resume: '/public/resume/Vijay-Ex-Uber-Resume-Nov-2026.pdf',
+  resumeMeta: { size: '90 KB', updated: 'Nov 2026' },
 
   lede: [
-    'Engineering leader with <em>17+ years in technology</em> and <em>6+ years building and scaling engineering organizations</em>.',
+    'Engineering leader with <em>17+ years in technology</em> and <em>6+ years building and scaling engineering organizations</em>. Seeking a Senior leadership role to drive <em>AI-forward platform and product engineering</em> at scale.',
   ],
 
   personal:
@@ -357,9 +357,9 @@ export const experience = [
 ];
 
 export const strengths = {
-  Leadership: ['Org design & scaling', 'GenAI adoption', 'Platform strategy & architecture', 'Cross-geo execution', 'Operational excellence'],
-  'Applied AI': ['AI agents', 'Multi-agent orchestration','Local LLMs', 'On-device inference', 'WebAssembly inference', 'Coding agents', 'Voice interfaces'],
-  Technical: ['JavaScript', 'React', 'Node.js', 'GraphQL', 'Webpack', 'Web architecture', 'PWA', 'RPC', 'Microservices', 'Java'],
+  Leadership: ['Org design & scaling', 'Platform strategy & architecture', 'GenAI adoption', 'Cross-geo execution', 'Leadership development', 'Operational excellence', 'Stakeholder management'],
+  'Applied AI': ['AI agents', 'Multi-agent orchestration', 'Local LLMs', 'On-device inference', 'WebAssembly inference', 'Coding agents', 'Voice interfaces'],
+  Technical: ['JavaScript', 'React', 'Node.js', 'GraphQL', 'Web architecture', 'PWA', 'RPC', 'Microservices', 'Java'],
 };
 
 export const speaking = [
@@ -389,7 +389,7 @@ export const socials = [
   { n: 'GitHub', h: '@nvkudva', u: 'https://github.com/nvkudva', i: 'github' },
   { n: 'LinkedIn', h: 'in/nvkudva', u: 'https://www.linkedin.com/in/nvkudva/', i: 'linkedin' },
   { n: 'Medium', h: '@nvkudva', u: 'https://medium.com/@nvkudva', i: 'medium' },
-  { n: 'Résumé', h: 'PDF · 98 KB', u: '/public/resume/Vijay-Krishna-Kudva-Resume.pdf', i: 'doc' },
+  { n: 'Résumé', h: 'PDF · 90 KB', u: '/public/resume/Vijay-Ex-Uber-Resume-Nov-2026.pdf', i: 'doc' },
 ];
 
 export const icons = {

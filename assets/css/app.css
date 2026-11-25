@@ -358,7 +358,7 @@ p{color:var(--ink-2); max-width:64ch; margin:0 0 11px}
 @keyframes summary-pulse{from{opacity:.45} to{opacity:1}}
 .summary-body{padding:20px 22px 24px; overflow-y:auto; max-height:calc(min(82vh, 860px) - 97px)}
 .summary-lede{font-size:14.5px; line-height:1.6; color:var(--ink-2); margin:0}
-.summary-lede strong, .summary-body strong{color:var(--ink)}
+.summary-lede strong, .summary-body strong, .plat p strong, .role li strong, .pbody p strong{color:var(--ink); font-weight:600}
 .summary-section{padding:16px 0 0}
 .summary-section h3{font-size:16px; margin:0 0 9px; padding-bottom:8px; border-bottom:1px solid var(--line)}
 .summary-section ul{margin:0; padding-left:17px; color:var(--ink-2)}

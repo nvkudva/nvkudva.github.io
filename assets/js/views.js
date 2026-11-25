@@ -6,6 +6,7 @@ import { qr } from './qr.js';
 import { acts } from './shell.js';
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const rich = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 const svg = (k) => `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="${icons[k]}"/></svg>`;
 const ext = (u) => (u.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '');
 
@@ -64,7 +65,7 @@ function card(p, i) {
         <div class="phead">
           <h3>${esc(p.title)}</h3>
         </div>
-        <p>${esc(p.desc)}</p>
+        <p>${rich(p.desc)}</p>
         <div class="pmeta">
           <div class="tags">
             ${p.lang ? `<span class="tag lang">${esc(p.lang)}</span>` : ''}
@@ -147,7 +148,7 @@ export const projectsView = () => `
           <div>
             <div class="org">${esc(p.org)} <span>${esc(p.years)}</span></div>
             <h3>${esc(p.name)}</h3>
-            <p>${esc(p.body)}</p>
+            <p>${rich(p.body)}</p>
           </div>
           <div class="mx">
             <div class="mxh">Impact</div>
@@ -219,7 +220,7 @@ export const resumeView = () => `
           <div class="role">
             <h3>${esc(r.title)}</h3>
             ${e.roles ? `<div class="rng">${esc(r.years)}${r.where ? ` · ${esc(r.where)}` : ''}</div>` : ''}
-            <ul>${r.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
+            <ul>${r.points.map((p) => `<li>${rich(p)}</li>`).join('')}</ul>
             ${r.built ? `<div class="built"><span class="blabel">Projects</span>${r.built.map(miniProject).join('')}</div>` : ''}
             ${r.builtProjects ? `<div class="built"><span class="blabel">Projects</span>${r.builtProjects.map(shippedProject).join('')}</div>` : ''}
           </div>`).join('')}

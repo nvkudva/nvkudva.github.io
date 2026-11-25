@@ -274,7 +274,7 @@ export const experience = [
   {
     org: 'AI & Tech Enthusiast',
     years: 'May 2025 – Present', where: 'India',
-    title: 'Applied AI Sabbatical : Prototyping the software factory',
+    title: 'Career Break Turned AI Learning Spree',
     builtProjects: ['omni-api', 'vega-web', 'Smart-News', 'HyperLight'],
     points: [
       'Planned break after relocating from the US to India; used it to go deep, hands-on, into applied AI.',

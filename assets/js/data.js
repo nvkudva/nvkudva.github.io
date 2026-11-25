@@ -277,11 +277,9 @@ export const experience = [
     title: 'Career Break & Applied AI Exploration',
     builtProjects: ['omni-api', 'vega-web', 'Smart-News', 'HyperLight'],
     points: [
-      'Planned break after relocating from the US to India; used it to go **deep, hands-on, into applied AI**.',
-      'Spent a year as **my own engineering org**: agents as the team, me on intent, review and release; a live test of what a software factory needs.',
-      'Shipped **multiple projects across diverse scope and platforms**, running several side by side while experimenting with **agent orchestration tools**.',
-      'Tested **local open-weight models** for real coding work — the cost, privacy and build-vs-buy call every AI-native team will face.',
-      'Next: **build and lead an AI-native engineering team** where humans set intent and quality bars, and agent pipelines run in a self-evolving loop.',
+      'Planned break after relocating from the US to India; went **deep, hands-on, into applied AI**.',
+      'Shipped **multiple cross-platform projects** using **agent orchestration** and **local open-weight models** — pressure-testing cost, privacy, and build-vs-buy trade-offs.',
+      'Next: **build and lead an AI-native engineering team** where humans set intent and quality bars while agents execute the repeatable work.',
     ],
   },
   {

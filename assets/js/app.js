@@ -70,12 +70,22 @@ function stick() {
    It slides in as the big name leaves, and never competes with it. */
 function watchTopbar() {
   const bar = document.querySelector('.topbar');
-  if (!bar) return;
+  const brand = document.querySelector('[data-rail-brand]');
+  const rail = document.querySelector('.rail');
+  if (!bar && !brand) return;
   let queued = false;
   const update = () => {
     const hero = document.querySelector('#overview .hero');
     const past = window.scrollY > 24 && (!hero || hero.getBoundingClientRect().bottom < 64);
-    bar.classList.toggle('on', past);
+    if (bar) bar.classList.toggle('on', past);
+    if (brand) {
+      const isMobile = rail && getComputedStyle(rail).borderRightWidth === '0px';
+      const h1 = document.querySelector('#overview .herohead h1');
+      const railBottom = rail ? rail.getBoundingClientRect().bottom : 0;
+      const nameHidden = isMobile && (!h1 || h1.getBoundingClientRect().bottom <= railBottom);
+      const nextText = nameHidden ? brand.dataset.name : 'Portfolio';
+      if (brand.textContent !== nextText) brand.textContent = nextText;
+    }
   };
   addEventListener('scroll', () => {
     if (queued) return;

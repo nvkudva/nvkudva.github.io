@@ -96,7 +96,7 @@ const console_ = () => `
   <div class="shell">
     <nav class="rail" aria-label="Primary">
       <div class="rail-id">
-        <a class="tb-name" href="/" data-link>${profile.name}</a>
+        <a class="tb-name" href="/" data-link data-rail-brand data-name="${profile.name}">Portfolio</a>
         ${acts()}
       </div>
 

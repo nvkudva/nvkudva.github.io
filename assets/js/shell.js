@@ -40,7 +40,7 @@ const summaryDialog = () => `
     </div>
 
     <div class="summary-body" data-summary-body hidden>
-      <p class="summary-lede">An <strong>Ex-Uber</strong> engineering leader combining <strong>tier-one platform pedigree</strong> with <strong>production-grade AI-native fluency</strong> — bridging <strong>executive org design</strong>, <strong>multi-million-dollar cost optimization</strong>, and <strong>deep architecture</strong> across <strong>hundreds of engineers</strong>.</p>
+      <p class="summary-lede">An <strong>Ex-Uber</strong> engineering leader pairing hands-on platform architecture with <strong>global org scaling</strong>, multi-million-dollar cost savings, and production AI execution.</p>
 
       <section class="summary-section">
         <h3>Global org scaling &amp; operational efficiency</h3>
